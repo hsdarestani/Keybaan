@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("apps.users.urls")), # Auth routes - login / register
-    path("", include("apps.home.urls"))             # UI Kits Html files
+    path("", include("apps.home.urls")) ,            # UI Kits Html files
+    path("panel/", include("apps.dashboard.urls")) 
 ]

@@ -13,7 +13,8 @@
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
 }		</style>
 
-#wd-629b20401792f a{background-color:#a762fe ;border-color:#a762fe !important ;}#wd-629b20401792f a:hover{background-color:#8726ff ;border-color:#8726ff !important ;}#wd-629f4d44db016 a{background-color:#a762fe ;border-color:#a762fe !important ;}#wd-629f4d44db016 a:hover{background-color:#8726ff ;border-color:#8726ff !important ;}#wd-629f5f4645fd2 a{background-color:#5b5b5b ;border-color:#5b5b5b !important ;}#wd-629f5f4645fd2 a:hover{background-color:#a31212 ;border-color:#a31212 !important ;}#wd-629f5f596c484 a{background-color:#5b5b5b ;border-color:#5b5b5b !important ;}#wd-629f5f596c484 a:hover{background-color:#a31212 ;border-color:#a31212 !important ;}#wd-629f5f60e1285 a{background-color:#5b5b5b ;border-color:#5b5b5b !important ;}#wd-629f5f60e1285 a:hover{background-color:#a31212 ;border-color:#a31212 !important ;}</style><style type="text/css" data-type="vc_custom-css">.packfeat{
+#wd-629b20401792f a{background-color:#a762fe ;border-color:#a762fe !important ;}#wd-629b20401792f a:hover{background-color:#8726ff ;border-color:#8726ff !important ;}#wd-629f4d44db016 a{background-color:#a762fe ;border-color:#a762fe !important ;}#wd-629f4d44db016 a:hover{background-color:#8726ff ;border-color:#8726ff !important ;}#wd-629f5f4645fd2 a{background-color:#5b5b5b ;border-color:#5b5b5b !important ;}#wd-629f5f4645fd2 a:hover{background-color:#a31212 ;border-color:#a31212 !important ;}#wd-629f5f596c484 a{background-color:#5b5b5b ;border-color:#5b5b5b !important ;}#wd-629f5f596c484 a:hover{background-color:#a31212 ;border-color:#a31212 !important ;}#wd-629f5f60e1285 a{background-color:#5b5b5b ;border-color:#5b5b5b !important ;}#wd-629f5f60e1285 a:hover{background-color:#a31212 ;border-color:#a31212 !important ;}
+.packfeat{
     background: rgb(96,96,96);
     background: linear-gradient(45deg, rgba(96,96,96,1) 0%, rgba(167,13,0,1) 100%);
     border-radius:20px;
@@ -71,8 +72,15 @@ background: linear-gradient(45deg, rgba(231,231,231,1) 0%, rgba(238,238,238,0) 1
        background-color:#A31212;
         border-radius:5px;
 }
-
+.titleright{
+	margin:20px !important;
+}
+.cuslogorow{
+	margin-right:50px;
+	margin-left:50px;
+}
 .vc_custom_1654333433831{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/bg.png?id=6028) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}
+.vc_custom_1654606113181{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/791-Converted-copy.png?id=6038) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654612056936{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/Group-7-e1654611223377.png?id=6057) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654608408540{background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654608159121{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654608175626{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654608151496{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654612110521{margin-top: 100px !important;margin-right: 100px !important;margin-bottom: 100px !important;margin-left: 100px !important;}.vc_custom_1654611404973{background-color: #d2d2d2 !important;}.vc_custom_1654611408878{background-color: #d2d2d2 !important;}.vc_custom_1654611419673{background-color: #d2d2d2 !important;}.vc_custom_1654611416155{background-color: #d2d2d2 !important;}.vc_custom_1654611412600{background-color: #d2d2d2 !important;}
  .wpb_animate_when_almost_visible { opacity: 1; }		
 				.whb-top-bar .wd-dropdown {
 	margin-top: 0px;
