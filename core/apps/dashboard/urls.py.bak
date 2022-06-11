@@ -5,7 +5,6 @@ from apps.dashboard import views
 
 urlpatterns = [
 
-    path('panel/', views.panel, name='panel'),
-
-
+    path('', views.panel, name='panel'),
+    path('form.html', views.panel, name='form'),
 ]

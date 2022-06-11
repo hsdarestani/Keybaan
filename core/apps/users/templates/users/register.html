@@ -1,0 +1,118 @@
+{% extends "apps/templates/base/base-fullscreen.html" %}
+{% block title %} ثبت نام {% endblock %}
+{% load static %}
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>کی‌بان | </title>
+
+	<!-- Bootstrap -->
+	<link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendors/bootstrap-rtl/dist/css/bootstrap-rtl.min.css' %}" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+	<!-- NProgress -->
+	<link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+	<!-- Animate.css -->
+	<link href="{% static 'vendors/animate.css/animate.min.css' %}" rel="stylesheet">
+
+	<!-- Custom Theme Style -->
+	<link href="{% static 'css/custom.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+
+<!-- [ auth-signup ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content">
+		<div class="card">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12">
+					<div class="card-body">
+						<img src="/static/assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+						<h4 class="mb-3 f-w-400">
+							<h4 class="mb-3 f-w-400">
+								ثبت نام
+							</h4>
+						</h4>
+						<span class="mb-0 text-muted">
+							{% if msg %}
+							{{ msg | safe }}
+							{% else %}
+							اطلاعات خود را وارد کنید
+							{% endif %}
+						</span>
+						<!-- dummy spacer -->
+						<p> <br /> </p>
+
+						<!-- Hide the form on success -->
+						{% if not success %}
+						<form role="form" method="post" action="">
+
+							{% csrf_token %}
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-user"></i></span>
+								</div>
+								{{ form.username }}
+							</div>
+							<span class="text-error">{{ form.username.errors }}</span>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-mail"></i></span>
+								</div>
+								{{ form.email }}
+							</div>
+							<span class="text-error">{{ form.email.errors }}</span>
+
+							<div class="input-group mb-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-lock"></i></span>
+								</div>
+								{{ form.password1 }}
+							</div>
+							<span class="text-error">{{ form.password1.errors }}</span>
+
+							<div class="input-group mb-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-lock"></i></span>
+								</div>
+								{{ form.password2 }}
+							</div>
+							<span class="text-error">{{ form.password2.errors }}</span>
+
+							<div class="form-group text-left mt-2">
+								<div class="checkbox checkbox-primary d-inline">
+									<input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2" checked="">
+									<label for="checkbox-fill-2" class="cr">با <a href="#"> قوانین و مقررات </a>موافق هستم</label>
+								</div>
+							</div>
+							<button type="submit" name="register" class="btn btn-primary btn-block mb-4">ثبت نام</button>
+
+						</form>
+
+						<p class="mb-0 text-muted">حساب کاربری دارید؟<a href="{% url 'users:login' %}" class="f-w-400">وارد شوید</a></p>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signup ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script src="/static/assets/js/waves.min.js"></script>
+
+{% endblock javascripts %}

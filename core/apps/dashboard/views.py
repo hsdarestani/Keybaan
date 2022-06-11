@@ -5,9 +5,8 @@ from django.template import loader
 from django.urls import reverse
 
 
-
 def panel(request):
     context = {'segment': 'panel'}
 
-    html_template = loader.get_template('dashboard/panel.html')
+    html_template = loader.get_template('apps/dashboard/templates/dashboard/panel.html')
     return HttpResponse(html_template.render(context, request))

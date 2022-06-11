@@ -1,11 +1,8 @@
 # -*- encoding: utf-8 -*-
 
 from django.urls import path, re_path
-from apps.dashboard import views
-
+from .views import *
+app_name = "dashboard"
 urlpatterns = [
-
-    path('', views.panel, name='panel'),
-
-
+    path('', panel, name='panel'),
 ]

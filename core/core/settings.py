@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
-TEMPLATE_DIR = os.path.join(BASE_DIR, "apps/templates")  # ROOT dir for templates
+TEMPLATE_DIR = os.path.join(BASE_DIR, "")  # ROOT dir for templates
 
 TEMPLATES = [
     {

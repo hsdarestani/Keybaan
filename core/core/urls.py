@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("apps.users.urls")), # Auth routes - login / register
     path("", include("apps.home.urls")) ,            # UI Kits Html files
-    path("panel/", include("apps.dashboard.urls")) 
+    path("panel/", include("apps.dashboard.urls")) ,
+    path("", include("apps.forms.urls")) ,
 ]

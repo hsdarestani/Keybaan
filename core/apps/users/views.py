@@ -1,8 +1,4 @@
 # -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -28,7 +24,7 @@ def login_view(request):
         else:
             msg = 'Error validating the form'
 
-    return render(request, "users/login.html", {"form": form, "msg": msg})
+    return render(request, "apps/users/templates/users/login.html", {"form": form, "msg": msg})
 
 
 def register_user(request):
@@ -53,4 +49,4 @@ def register_user(request):
     else:
         form = SignUpForm()
 
-    return render(request, "users/register.html", {"form": form, "msg": msg, "success": success})
+    return render(request, "apps/users/templates/users/register.html", {"form": form, "msg": msg, "success": success})
