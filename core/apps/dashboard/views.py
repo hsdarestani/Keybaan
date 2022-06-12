@@ -10,3 +10,9 @@ def panel(request):
 
     html_template = loader.get_template('apps/dashboard/templates/dashboard/panel.html')
     return HttpResponse(html_template.render(context, request))
+
+def echarts(request):
+    context = {'segment': 'echarts'}
+
+    html_template = loader.get_template('apps/dashboard/templates/dashboard/eCharts.html')
+    return HttpResponse(html_template.render(context, request))
