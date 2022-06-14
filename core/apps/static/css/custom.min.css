@@ -4295,7 +4295,7 @@ fieldset {
 }
 
 .form_wizard .stepContainer {
-  display: block;
+  display: inline;
   position: relative;
   margin: 0;
   padding: 0;
@@ -4380,7 +4380,7 @@ fieldset {
 }
 
 .wizard_verticle ul.wizard_steps li a.done .step_no, .wizard_verticle ul.wizard_steps li a.done:before {
-  background: #BF4747;
+  background: #eeeeee;
   color: #fff
 }
 
@@ -4389,7 +4389,7 @@ fieldset {
 }
 
 .wizard_verticle ul.wizard_steps li a.selected:before {
-  background: #707070;
+  background: #a762fe;
   color: #fff
 }
 
