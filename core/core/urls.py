@@ -18,8 +18,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("apps.users.urls")), # Auth routes - login / register
+    path("", include("apps.useraccount.urls")), # Auth routes - login / register
     path("", include("apps.home.urls")) ,            # UI Kits Html files
     path("panel/", include("apps.dashboard.urls")) ,
-    path("", include("apps.forms.urls")) ,
+    path("", include("apps.formsscontract.urls")) ,
+    path("", include("apps.formsecontract.urls")) ,
+    path("", include("apps.formsoutput.urls")) ,
+    path("", include("apps.formsinput.urls")) ,
 ]

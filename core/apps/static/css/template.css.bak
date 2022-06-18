@@ -1,6 +1,6 @@
 
-			
-.wd-product-countdown 
+
+.wd-product-countdown
 {
 	direction:ltr;
 	text-align:right;
@@ -76,8 +76,8 @@ background: linear-gradient(45deg, rgba(231,231,231,1) 0%, rgba(238,238,238,0) 1
 	margin:20px !important;
 }
 .vc_custom_1654333433831{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/bg.png?id=6028) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}
-.vc_custom_1654606113181{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/791-Converted-copy.png?id=6038) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654612056936{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/Group-7-e1654611223377.png?id=6057) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654608408540{background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654608159121{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654608175626{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654608151496{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654612110521{margin-top: 100px !important;margin-right: 100px !important;margin-bottom: 100px !important;margin-left: 100px !important;}.vc_custom_1654611404973{background-color: #d2d2d2 !important;}.vc_custom_1654611408878{background-color: #d2d2d2 !important;}.vc_custom_1654611419673{background-color: #d2d2d2 !important;}.vc_custom_1654611416155{background-color: #d2d2d2 !important;}.vc_custom_1654611412600{background-color: #d2d2d2 !important;}
- .wpb_animate_when_almost_visible { opacity: 1; }		
+.vc_custom_1654606113181{background-image: url(https://keybaan.com/wp-content/uploads/2022/06/791-Converted-copy.png?id=6038) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654612056936{background-image: url(apps\static\images\rightgray.png) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654608408540{background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1654608159121{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654608175626{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654608151496{background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}.vc_custom_1654612110521{margin-top: 100px !important;margin-right: 100px !important;margin-bottom: 100px !important;margin-left: 100px !important;}.vc_custom_1654611404973{background-color: #d2d2d2 !important;}.vc_custom_1654611408878{background-color: #d2d2d2 !important;}.vc_custom_1654611419673{background-color: #d2d2d2 !important;}.vc_custom_1654611416155{background-color: #d2d2d2 !important;}.vc_custom_1654611412600{background-color: #d2d2d2 !important;}
+ .wpb_animate_when_almost_visible { opacity: 1; }
 				.whb-top-bar .wd-dropdown {
 	margin-top: 0px;
 }
@@ -127,7 +127,7 @@ background: linear-gradient(45deg, rgba(231,231,231,1) 0%, rgba(238,238,238,0) 1
 		height: 40px;
 		max-height: 40px;
 	}
-		
+
 		.whb-general-header-inner {
 		height: 90px;
 		max-height: 90px;
@@ -137,7 +137,7 @@ background: linear-gradient(45deg, rgba(231,231,231,1) 0%, rgba(238,238,238,0) 1
 		height: 60px;
 		max-height: 60px;
 	}
-		
+
 		.whb-header-bottom-inner {
 		height: 50px;
 		max-height: 50px;
@@ -147,8 +147,8 @@ background: linear-gradient(45deg, rgba(231,231,231,1) 0%, rgba(238,238,238,0) 1
 		height: 50px;
 		max-height: 50px;
 	}
-		
-	
+
+
 	}
 
 @media (max-width: 1024px) {
@@ -156,17 +156,16 @@ background: linear-gradient(45deg, rgba(231,231,231,1) 0%, rgba(238,238,238,0) 1
 		height: 40px;
 		max-height: 40px;
 	}
-	
+
 		.whb-general-header-inner {
 		height: 60px;
 		max-height: 60px;
 	}
-	
+
 		.whb-header-bottom-inner {
 		height: 50px;
 		max-height: 50px;
 	}
-	
-	
+
+
 	}
-					

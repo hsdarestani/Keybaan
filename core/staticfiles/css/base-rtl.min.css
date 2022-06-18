@@ -1378,6 +1378,7 @@ button[disabled], input[disabled] {
   position: absolute;
   top: 100%;
   right: 0;
+  width:max-content ;
   z-index: 380;
   margin: 15px 0 0;
   background-color: #FFF;

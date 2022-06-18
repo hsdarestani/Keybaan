@@ -201,22 +201,22 @@ body.header-banner-display .website-wrapper {
 	font-weight: normal;
 	font-style: normal;
 	font-family: "woodmart-font";
-	src: url("//keybaan.com/wp-content/themes/woodmart/fonts/woodmart-font.woff2?v=6.1.4") format("woff2"),
-	url("//keybaan.com/wp-content/themes/woodmart/fonts/woodmart-font.woff?v=6.1.4") format("woff");
+	src: url("../fonts/woff2/woodmart-font.woff2?v=6.1.4") format("woff2"),
+	url("../fonts/woff/woodmart-font.woff?v=6.1.4") format("woff");
 }
 
 @font-face {
 	font-family: "vazir";
-	src: url("//keybaan.com/wp-content/uploads/2021/12/Vazir-Regular-FD.woff2") format("woff2"),
-url("//keybaan.com/wp-content/uploads/2021/12/Vazir-Regular-FD.woff") format("woff");
+	src: url("../fonts/woff2/Vazir-Regular-FD.woff2") format("woff2"),
+url("../fonts/woff/Vazir-Regular-FD.woff") format("woff");
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "vazirb";
-	src: url("//keybaan.com/wp-content/uploads/2021/12/Vazir-Bold-FD.woff2") format("woff2"),
-url("//keybaan.com/wp-content/uploads/2021/12/Vazir-Bold-FD.woff") format("woff");
+	src: url("../fonts/woff2/Vazir-Bold-FD.woff2") format("woff2"),
+url("../fonts/woff/Vazir-Bold-FD.woff") format("woff");
 	font-weight: 400;
 	font-style: normal;
 }

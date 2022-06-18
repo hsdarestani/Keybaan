@@ -60,13 +60,13 @@ Calendar = function (firstDayOfWeek, dateStr, onSelected, onClose) {
 			Calendar._SMN_len = 3;
 		if (typeof Calendar._JSMN_len == "undefined")
 			Calendar._JSMN_len = 3;
-			
+
 		ar = new Array();
 		for (var i = 12; i > 0;) {
 			ar[--i] = Calendar._MN[i].substr(0, Calendar._SMN_len);
 		}
 		Calendar._SMN = ar;
-		
+
 		ar = new Array();
 		for (var i = 12; i > 0;) {
 			ar[--i] = Calendar._JMN[i].substr(0, Calendar._JSMN_len);
@@ -714,8 +714,8 @@ Calendar.cellClick = function(el, ev) {
 		    case 0:
 			// TODAY will bring us here
 			if ((typeof cal.getDateStatus == "function") &&
-			    cal.getDateStatus(date, date.getLocalFullYear(true, cal.dateType), 
-			    	date.getLocalMonth(true, cal.dateType), 
+			    cal.getDateStatus(date, date.getLocalFullYear(true, cal.dateType),
+			    	date.getLocalMonth(true, cal.dateType),
 			    	date.getLocalDate(true, cal.dateType))) {
 				return false;
 			}
@@ -991,7 +991,7 @@ Calendar.prototype.create = function (_par) {
 };
 
 Calendar.prototype.recreate = function() {
-	if (this.element) { 
+	if (this.element) {
 		var parent = this.element.parentNode;
 		parent.removeChild(this.element);
 		if (parent == document.body) this.create();
@@ -1205,8 +1205,8 @@ Calendar.prototype._init = function (firstDayOfWeek, date) {
 	var year = date.getLocalFullYear(true, this.dateType);
 	if (year < this.minYear) {
 		year = this.minYear;
-		date._calSetLocalFullYear(this.dateType, year); 
-		
+		date._calSetLocalFullYear(this.dateType, year);
+
 	} else if (year > this.maxYear) {
 		year = this.maxYear;
 		date._calSetLocalFullYear(this.dateType, year);
@@ -1354,7 +1354,7 @@ Calendar.prototype.setDate = function (date) {
 Calendar.prototype.refresh = function () {
 	if (this.element) {
 		this._init(this.firstDayOfWeek, this.date);
-	} else this.create(); 
+	} else this.create();
 };
 
 
@@ -1490,8 +1490,8 @@ Calendar.prototype.showAtElement = function (el, opts) {
 		var br = Calendar.getAbsolutePos(cp);
 		document.body.removeChild(cp);
 		if (Calendar.is_ie) {
-			br.y += typeof window.pageYOffset != 'undefined' ? window.pageYOffset : 
-				document.documentElement && document.documentElement.scrollTop ? document.documentElement.scrollTop : 
+			br.y += typeof window.pageYOffset != 'undefined' ? window.pageYOffset :
+				document.documentElement && document.documentElement.scrollTop ? document.documentElement.scrollTop :
 				document.body.scrollTop ? document.body.scrollTop : 0;
 			br.x += document.body.scrollLeft;
 		} else {
@@ -1693,25 +1693,25 @@ Date.parseDate = function(str, format, dateType) {
 	var min = 0;
 	var sec = 0;
 	var msec = 0;
-	
+
 	var a = format.match(/%.|[^%]+/g);
 	for (var i = 0; i < a.length; i++) {
 		if (a[i].charAt(0) == '%') {
 			switch (a[i]) {
 				case '%%':
-				
+
 				case '%t':
 				case '%n':
-				
+
 				case '%u':
 				case '%w':
 					str = str.substr(1);
 					break;
-					
-				
+
+
 					str = str.substr(1);
 					break;
-					
+
 				case '%U':
 				case '%W':
 				case '%V':
@@ -1720,25 +1720,25 @@ Date.parseDate = function(str, format, dateType) {
 			    		str = str.substr(wn[0].length);
 			    	}
 					break;
-				
+
 				case '%C':
 					var century;
 					if (century = str.match(/^\d{1,2}/)) {
 						str = str.substr(century[0].length);
 					}
 					break;
-					
+
 				case '%A':
 				case '%a':
 			    	var weekdayNames = (a[i] == '%a') ? Calendar._SDN : Calendar._DN;
 					for (j = 0; j < 7; ++j) {
 						if (str.substr(0, weekdayNames[j].length).toLowerCase() == weekdayNames[j].toLowerCase()) {
 							str = str.substr(weekdayNames[j].length);
-							break; 
+							break;
 						}
 					}
 					break;
-					
+
 				case "%d":
 				case "%e":
 			    	if (d = str.match(/^[0-3]?\d/)) {
@@ -1746,14 +1746,14 @@ Date.parseDate = function(str, format, dateType) {
 			    		d = parseInt(d[0], 10);
 			    	}
 					break;
-	
+
 			    case "%m":
 		    		if (m = str.match(/^[01]?\d/)) {
 			    		str = str.substr(m[0].length);
 			    		m = parseInt(m[0], 10) - 1;
 			    	}
 					break;
-		
+
 			    case "%Y":
 			    case "%y":
 			    	if (y = str.match(/^\d{2,4}/)) {
@@ -1765,7 +1765,7 @@ Date.parseDate = function(str, format, dateType) {
 						}
 			    	}
 				break;
-	
+
 			    case "%b":
 			    case "%B":
 			    	if (dateType == 'jalali') {
@@ -1777,11 +1777,11 @@ Date.parseDate = function(str, format, dateType) {
 						if (str.substr(0, monthNames[j].length).toLowerCase() == monthNames[j].toLowerCase()) {
 							str = str.substr(monthNames[j].length);
 							m = j;
-							break; 
+							break;
 						}
 					}
 					break;
-	
+
 			    case "%H":
 			    case "%I":
 			    case "%k":
@@ -1791,51 +1791,51 @@ Date.parseDate = function(str, format, dateType) {
 			    		hr = parseInt(hr[0], 10);
 			    	}
 				break;
-	
+
 			    case "%P":
 			    case "%p":
 			    	if (str.substr(0, Calendar._TT["LPM"].length) == Calendar._TT["LPM"]) {
 						str = str.substr(Calendar._TT["LPM"].length);
 						if (hr < 12) hr += 12;
 			    	}
-			    	
+
 			    	if (str.substr(0, Calendar._TT["PM"].length) == Calendar._TT["PM"]) {
 			    		str = str.substr(Calendar._TT["PM"].length);
 						if (hr < 12) hr += 12;
 			    	}
-			    	
+
 			    	if (str.substr(0, Calendar._TT["LAM"].length) == Calendar._TT["LAM"]) {
 			    		str = str.substr(Calendar._TT["LAM"].length);
 						if (hr >= 12) hr -= 12;
 			    	}
-			    	
+
 			    	if (str.substr(0, Calendar._TT["AM"].length) == Calendar._TT["AM"]) {
 			    		str = str.substr(Calendar._TT["AM"].length);
 						if (hr >= 12) hr -= 12;
 			    	}
 					break;
-	
+
 			    case "%M":
 			    	if (min = str.match(/^[0-5]?\d/)) {
 			    		str = str.substr(min[0].length);
 			    		min = parseInt(min[0], 10);
 			    	}
 					break;
-					
+
 				case "%S":
 			    	if (sec = str.match(/^[0-5]?\d/)) {
 			    		str = str.substr(sec[0].length);
 			    		sec = parseInt(sec[0], 10);
 			    	}
 					break;
-					
+
 				case "%s":
 					var time;
 					if (time = str.match(/^-?\d+/)) {
 						return new Date(parseInt(time[0], 10) * 1000);
 					}
 					break;
-				
+
 				default :
 					str = str.substr(2);
 					break;
@@ -1844,18 +1844,18 @@ Date.parseDate = function(str, format, dateType) {
 			str = str.substr(a[i].length);
 		}
 	}
-	
-	if (y == null || isNaN(y)) y = today.getLocalFullYear(false, dateType); 
+
+	if (y == null || isNaN(y)) y = today.getLocalFullYear(false, dateType);
 	if (m == null || isNaN(m)) m = today.getLocalMonth(false, dateType);
 	if (d == null || isNaN(d)) d = today.getLocalDate(false, dateType);
 	if (hr == null || isNaN(hr)) hr = today.getHours();
 	if (min == null || isNaN(min)) min = today.getMinutes();
 	if (sec == null || isNaN(sec)) sec = today.getSeconds();
-	
+
 	result.setLocalFullYear(true, dateType, y, m, d);
-	
+
 	result.setUTCHours(hr, min, sec, msec);
-	
+
 	return result;
 }
 
@@ -1932,13 +1932,13 @@ Date.prototype.getUTCWeekNumber = function() {
 
 Date.prototype.getJalaliUTCWeekNumber = function() {
 	var j = JalaliDate.jalaliToGregorian(this.getJalaliUTCFullYear(), 1, 1);
-	
+
 	//First Saturday of the year
 	var d = new Date(Date.UTC(j[0], j[1]-1, j[2], 0, 0, 0));
-	
+
 	//Number of days after the first Saturday of the year
 	var days = this.getJalaliUTCDayOfYear() - ((7 - d.getJalaliUTCDay()) % 7) - 1;
-	
+
 	if (days < 0) return new Date(this - this.getJalaliUTCDay()*Date.DAY).getJalaliUTCWeekNumber();
 	return Math.floor(days / 7) + 1;
 };
@@ -1978,7 +1978,7 @@ Date.prototype.print = function (str, dateType, useLangNumbers) {
 	var d = this.getLocalDate(true, dateType);
 	var y = this.getLocalFullYear(true, dateType);
 	var wn = this.getLocalWeekNumber(true, dateType);
-	
+
 	var w = this.getUTCDay();
 	var s = {};
 	var hr = this.getUTCHours();
@@ -2009,7 +2009,7 @@ Date.prototype.print = function (str, dateType, useLangNumbers) {
 	s["%n"] = "\n";		// a newline character
 	s["%p"] = pm ? Calendar._TT["PM"] : Calendar._TT["AM"];
 	s["%P"] = pm ? Calendar._TT["LPM"] : Calendar._TT["LAM"];
-	
+
 	// FIXME: %r : the time in am/pm notation %I:%M:%S %p
 	// FIXME: %R : the time in 24-hour notation %H:%M
 	s["%s"] = Math.floor(this.getTime() / 1000);
@@ -2038,7 +2038,7 @@ Date.prototype.print = function (str, dateType, useLangNumbers) {
 			}
 		}
 	}
-	
+
 	if (useLangNumbers) str = str.convertNumbers();
 
 	return str;
@@ -2133,11 +2133,6 @@ Date.prototype.getLocalDay = function(UTC, dateType) {
 
 // global object that remembers the calendar
 window._dynarch_popupCalendar = null;
-</script>
-<!-- end Simple Custom CSS and JS -->
-<!-- start Simple Custom CSS and JS -->
-<script type="text/javascript">
-
 
 
 Calendar.setup = function (params) {
@@ -2193,7 +2188,7 @@ Calendar.setup = function (params) {
 		if (params.displayArea && !params.displayArea.innerHTML)
 			params.displayArea.innerHTML = new Date(params.date).print(params.ifFormat, params.ifDateType || params.dateType, params.langNumbers);
 	}
-	
+
 	function onSelect(cal) {
 		var p = cal.params;
 		var update = (cal.dateClicked || p.electric);
@@ -2253,7 +2248,7 @@ Calendar.setup = function (params) {
 			cal.multiple[ds] = d;
 		}
 	}
-	
+
 	if (!params.flat) {
 		var triggerEl = params.button || params.displayArea || params.inputField;
 		triggerEl["on" + params.eventName] = function() {
@@ -2279,10 +2274,7 @@ Calendar.setup = function (params) {
 	}
 	return cal;
 };
-</script>
-<!-- end Simple Custom CSS and JS -->
-<!-- start Simple Custom CSS and JS -->
-<script type="text/javascript">
+
 // ** I18N
 
 // Calendar FA language
@@ -2455,11 +2447,7 @@ Calendar._TT["PM"] = "ب.ظ.";
 
 Calendar._NUMBERS = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
-Calendar._DIR = 'rtl';</script>
-<!-- end Simple Custom CSS and JS -->
-<!-- start Simple Custom CSS and JS -->
-<script type="text/javascript">
-
+Calendar._DIR = 'rtl';
 
 JalaliDate = {
 	g_days_in_month: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
@@ -2482,14 +2470,14 @@ JalaliDate.jalaliToGregorian = function(j_y, j_m, j_d)
 
 	var g_day_no = j_day_no+79;
 
-	var gy = 1600 + 400 * parseInt(g_day_no / 146097); 
+	var gy = 1600 + 400 * parseInt(g_day_no / 146097);
 	g_day_no = g_day_no % 146097;
 
 	var leap = true;
-	if (g_day_no >= 36525) 
+	if (g_day_no >= 36525)
 	{
 		g_day_no--;
-		gy += 100*parseInt(g_day_no/  36524); 
+		gy += 100*parseInt(g_day_no/  36524);
 		g_day_no = g_day_no % 36524;
 
 		if (g_day_no >= 365)
@@ -2498,7 +2486,7 @@ JalaliDate.jalaliToGregorian = function(j_y, j_m, j_d)
 			leap = false;
 	}
 
-	gy += 4*parseInt(g_day_no/ 1461); 
+	gy += 4*parseInt(g_day_no/ 1461);
 	g_day_no %= 1461;
 
 	if (g_day_no >= 366) {
@@ -2537,7 +2525,7 @@ JalaliDate.gregorianToJalali = function(g_y, g_m, g_d)
 	for (var i=0; i < gm; ++i)
 	g_day_no += JalaliDate.g_days_in_month[i];
 	if (gm>1 && ((gy%4==0 && gy%100!=0) || (gy%400==0)))
-	
+
 	++g_day_no;
 	g_day_no += gd;
 

@@ -64,14 +64,15 @@
                 </li>
                 <li><a><i class="fa fa-edit"></i> فرم های ورود اطلاعات <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="{% url 'forms:contract' %}">ثبت قرارداد</a></li>
-                    <li><a href="{% url 'forms:input' %}">ثبت ورودی</a></li>
-                    <li><a href="{% url 'forms:output' %}">ثبت خروجی</a></li>
+                    <li><a href="{% url 'formsscontract:contract' %}">ثبت قرارداد</a></li>
+                    <li><a href="{% url 'formsecontract:econtract' %}">فسخ قرارداد</a></li>
+                    <li><a href="{% url 'formsinput:input' %}">ثبت ورودی</a></li>
+                    <li><a href="{% url 'formsoutput:output' %}">ثبت خروجی</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-bar-chart-o"></i> ارائه داده <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="{% url 'dashboard:echarts' %}">ECharts</a></li>
+                    <li><a href="{% url 'dashboard:echarts' %}">گزارش تفصیلی BI</a></li>
                   </ul>
                 </li>
               </ul>
@@ -84,7 +85,7 @@
             <a data-toggle="tooltip" data-placement="top" title="تمام صفحه" onclick="toggleFullScreen();">
               <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
             </a>
-            <a data-toggle="tooltip" data-placement="top" title="خروج" href="{% url 'users:login' %}">
+            <a data-toggle="tooltip" data-placement="top" title="خروج" href="{% url 'useraccount:login' %}">
               <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
           </div>
@@ -115,7 +116,7 @@
                     </a>
                   </li>
                   <!-- <li><a href="javascript:;">کمک</a></li>-->
-                  <li><a href="{% url 'users:login' %}"><i class="fa fa-sign-out pull-right"></i> خروج</a></li>
+                  <li><a href="{% url 'useraccount:login' %}"><i class="fa fa-sign-out pull-right"></i> خروج</a></li>
                 </ul>
               </li>
 

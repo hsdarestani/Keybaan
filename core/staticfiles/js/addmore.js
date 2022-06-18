@@ -18,7 +18,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		if(y < max_fields){ //max input box allowed
 			y++; //text box increment
-			$(wrapper_ins).append('<li class="boardli"><input type="checkbox" ><i></i><h4>قسط '+ (y) +'</h4><p><span class="row"><input class=" col-md-4 col-sm-4 col-xs-6 w15" type="text" id="value" name="value" placeholder="نوبت قسط"><input class=" col-md-4 col-sm-4 col-xs-6 w40" type="text" id="value" name="value" placeholder="مبلغ قسط"><input class="col-md-4 col-sm-4 col-xs-6 w40" type="text" readonly="readonly" placeholder="تاریخ پرداخت" id="PaymentDateJalali'+ (y) +'"><script type="text/javascript">kamaDatepicker("PaymentDateJalali'+ (y) +'", {buttonsColor: "red",forceFarsiDigits: true});</script></span><br><br></p><a href="#" class="remove_field">حذف</a></span></li>'); //add input box
+			$(wrapper_ins).append('<li class="boardli"><a href="#" class="remove_field">حذف</a><input type="checkbox" ><i></i><h4>قسط '+ (y) +'</h4><p><span class="row"><input class=" col-md-4 col-sm-4 col-xs-6 w15" type="text" id="value" name="value" placeholder="نوبت قسط"><input class=" col-md-4 col-sm-4 col-xs-6 w40" type="text" id="value" name="value" placeholder="مبلغ قسط"><input class="col-md-4 col-sm-4 col-xs-6 w40" type="text" readonly="readonly" placeholder="تاریخ پرداخت" id="PaymentDateJalali'+ (y) +'"><script type="text/javascript">kamaDatepicker("PaymentDateJalali'+ (y) +'", {buttonsColor: "red",forceFarsiDigits: true});</script></span><br><br></p></span></li>'); //add input box
 		}});
 	$(wrapper_brd).on("click",".remove_field", function(e){ //user click on remove text
 		e.preventDefault(); $(this).parent('li').remove(); x--;
