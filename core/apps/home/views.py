@@ -4,8 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-
-
+from .forms import ContactUsForm
+from .models import ContactUs
+from django.contrib import messages
 
 def index(request):
     context = {'segment': 'index'}
@@ -24,6 +25,25 @@ def faq(request):
     context = {'segment': 'faq'}
 
     html_template = loader.get_template('apps/home/templates/home/faq.html')
+    return HttpResponse(html_template.render(context, request))
+
+
+def contactform(request):
+    form = ContactUsForm()
+    # form.fields['ip_address'].initial = ip_address
+    if request.POST:
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'پیام شما با موفقیت ارسال گردید.')
+            # obj.ip_address = ip_address
+            # obj.save()
+            # return redirect('/')
+
+    context ={
+        "form" : form,
+        }
+    html_template = loader.get_template('apps/home/templates/home/contactform.html')
     return HttpResponse(html_template.render(context, request))
 
 def contact(request):

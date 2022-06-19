@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.home',
     'apps.formsscontract',
     'apps.formsecontract',
     'apps.formsinput',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'apps.ticketing',
     'apps.blogapp',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
