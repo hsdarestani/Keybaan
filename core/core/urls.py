@@ -21,8 +21,6 @@ urlpatterns = [
     path("", include("apps.useraccount.urls")), # Auth routes - login / register
     path("", include("apps.home.urls")) ,            # UI Kits Html files
     path("panel/", include("apps.dashboard.urls")) ,
-    path("", include("apps.formsscontract.urls")) ,
-    path("", include("apps.formsecontract.urls")) ,
-    path("", include("apps.formsoutput.urls")) ,
-    path("", include("apps.formsinput.urls")) ,
+    path("", include("apps.formsOOH.urls")) ,
+    path("", include("apps.formsFandB.urls")) ,
 ]
