@@ -1,0 +1,52 @@
+{% extends "apps/dashboard/templates/dashboard/layout.html" %}
+{% load static %}
+
+{% block title %} تیکت #{{ticket.id}} {% endblock %}
+{% block content %}
+<link href="{% static 'css/tickets.css'%}" rel="stylesheet" />
+<div class="right_col" role="main">
+  <div class="col-md-8 col-sm-8 col-xs-12">
+
+    <h3>تیکت #{{ticket.id}</h3>
+        <br>
+<div class="ticket">
+  <table class="table table-striped jambo_table bulk_action">
+    <h2> تیکت #{{ticket.id}}</h2>
+      <tbody>
+        <tr>
+          <td>عنوان</td>
+          <td>{{ticket.title}}</td>
+        </tr>
+        <tr>
+          <td>وضعیت</td>
+          <td>{{ticket.status}}</td>
+        </tr>
+        <tr>
+          <td>بخش</td>
+          <td>{{ticket.assignee}}</td>
+        </tr>
+        <tr>
+          <td>توضیحات</td>
+          <td>{{ticket.description}}</td>
+        </tr>
+        <tr>
+          <td>ایجاد شده در</td>
+          <td>{{ticket.created_at}}</td>
+        </tr>
+        <tr>
+          <td>به روز شده در</td>
+          <td>{{ticket.updated_at}}</td>
+        </tr>
+      </tbody>
+      </table>
+  </div>
+
+</div>
+</div>
+
+<!-- /page content -->
+{% endblock %}
+{% block scriptsFiles %}
+{% endblock%}
+{% block scripts %}
+{% endblock %}

@@ -23,4 +23,5 @@ urlpatterns = [
     path("panel/", include("apps.dashboard.urls")) ,
     path("", include("apps.formsOOH.urls")) ,
     path("", include("apps.formsFandB.urls")) ,
+    path("", include("apps.ticketing.urls")),
 ]

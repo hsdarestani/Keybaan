@@ -64,10 +64,10 @@
                 </li>
                 <li><a><i class="fa fa-edit"></i> فرم های ورود اطلاعات <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="{% url 'formsscontract:contract' %}">ثبت قرارداد</a></li>
-                    <li><a href="{% url 'formsecontract:econtract' %}">فسخ قرارداد</a></li>
-                    <li><a href="{% url 'formsinput:input' %}">ثبت ورودی</a></li>
-                    <li><a href="{% url 'formsoutput:output' %}">ثبت خروجی</a></li>
+                    <li><a href="{% url 'formsOOH:contract' %}">ثبت قرارداد</a></li>
+                    <li><a href="{% url 'formsOOH:econtract' %}">فسخ قرارداد</a></li>
+                    <li><a href="{% url 'formsFandB:input' %}">ثبت ورودی</a></li>
+                    <li><a href="{% url 'formsFandB:output' %}">ثبت خروجی</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-bar-chart-o"></i> ارائه داده <span class="fa fa-chevron-down"></span></a>
@@ -75,6 +75,14 @@
                     <li><a href="{% url 'dashboard:echarts' %}">گزارش تفصیلی BI</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-ticket"></i> پشتیبانی <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{% url 'ticketing:tickets' %}"><i class="fa fa-ticket"></i>تیکت‌ها</a>
+                    <li><a href="{% url 'ticketing:ticketsubmit' %}"><i class="fa fa-plus-square"></i>ثبت تیکت جدید</a>
+                    </li>
+                  </ul>
+                </li>
+
               </ul>
             </div>
           </div>

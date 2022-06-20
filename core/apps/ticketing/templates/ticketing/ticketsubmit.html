@@ -1,0 +1,23 @@
+{% extends "apps/dashboard/templates/dashboard/layout.html" %}
+{% load static %}
+{% block content %}
+
+<div class="right_col" role="main">
+  <div class="col-md-8 col-sm-8 col-xs-12">
+
+    <h3>ثبت تیکت جدید</h3>
+    <br>
+
+    {{ form.as_table }}
+    {% csrf_token %}
+
+    <input class="col-md-8 col-sm-8 col-xs-12" type="submit" value="ثبت">
+  </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}
+{% block scriptsFiles %}
+{% endblock%}
+{% block scripts %}
+{% endblock %}
