@@ -41,10 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.forms',
-    'apps.databases',
-    'apps.users',
-    'apps.reports',
+    'apps.home',
+    'apps.formsFandB',
+    'apps.formsOOH',
+    'apps.useraccount',
+    'apps.dashboard',
+    'apps.ticketing',
+    'apps.blogapp',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +62,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
-TEMPLATE_DIR = os.path.join(BASE_DIR, "apps/templates")  # ROOT dir for templates
+TEMPLATE_DIR = os.path.join(BASE_DIR, "")  # ROOT dir for templates
 
 TEMPLATES = [
     {
