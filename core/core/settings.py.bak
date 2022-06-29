@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-eo!ybyoh!%zjo9_5ap+(wd-s3yyd&)-d@v3%yx%qk3c71=w9p6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['keybaan.ir']
 
 
 # Application definition

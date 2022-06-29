@@ -2,30 +2,30 @@
 {% load static %}
 
 {% block content %}
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
+<script src="{% static 'js/kamadatepicker.js' %}"></script>
+<script src="{% static 'js/kamadatepicker.min.js' %}"></script>
+<script src="{% static 'js/kamadatepicker.holidays.js' %}"></script>
+<link href="{% static 'css/kamadatepicker.min.css'%}" rel="stylesheet" />
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
   <div class="col-md-8 col-sm-8 col-xs-12">
 
 
+
     <h3> فرم ثبت ورود اقلام</h3>
-    <form class="boxed">
+    <form method="post" id="InputsForm" class="boxed">
+      {% csrf_token %}
 
       <br><br>
       <div class="row">
-        <input class="col-md-8 col-sm-8 col-xs-12 kbforms" list="inventory" name="browser" placeholder="قلم کالا">
-        <datalist id="inventory">
-          <option value="کالای 1">
-          <option value="کالای 2">
-          <option value="کالای 3">
-          <option value="کالای 4">
-          <option value="کالای 5">
-        </datalist>
+        {{ form.ProcurementID }}
       </div>
       <br><br>
 
       <div class="row">
-        <input class=" col-md-4 col-sm-4 col-xs-6 w40" type="text" id="value" name="value" placeholder="مقدار">
+        {{ form.TransferedQuantity }}
         <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="x" name="unit" value="x" checked="checked">
         <label class="unitcheck" for="x">واحد x</label>
         <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="y" name="unit" value="y">
@@ -36,11 +36,11 @@
       </div>
       <br><br>
       <div class="row">
-        <input class="kbforms col-md-4 col-sm-4 col-xs-6" type="date" id="date" name="date">
+        {{ form.TransferedDateJalali }}
       </div>
       <br><br>
       <div class="row">
-        <input class="col-md-8 col-sm-8 col-xs-12" type="submit" value="ثبت">
+        <input class="col-md-8 col-sm-8 col-xs-12" type="submit" name="InputsForm" form="InputsForm" value="ثبت">
       </div>
     </form>
 
@@ -48,6 +48,12 @@
 
 
   </div>
+  <script type="text/javascript">
+    kamaDatepicker('TransferedDateJalali', {
+      buttonsColor: "red",
+      forceFarsiDigits: true
+    });
+  </script>
 </div>
 
 <!-- /page content -->

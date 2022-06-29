@@ -1,6 +1,45 @@
 {% include "apps/templates/base/header.html" %}
 {% load static%}
+<style>
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 19239; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
 <div class="row content-layout-wrapper align-items-start">
   <div class="site-content col-lg-12 col-12 col-md-12" role="main">
     <article id="post-6027" class="post-6027 page type-page status-publish hentry">
@@ -52,10 +91,7 @@
                 <div class="wpb_wrapper">
                   <div class="wpb_text_column wpb_content_element">
                     <div class="wpb_wrapper">
-                      <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-                        بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
-                        فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد
-                        استفاده قرار گیرد.</p>
+                      <p> در فضای جهانی، بازیگران اصلی صنعت همسو با روندها، استفاده از ابزارهای دیجیتال را در دستور کار گذاشته و با استفاده از آن به گزارش‌دهی و تصمیم‌سازی می‌پردازند. رسالت و هدف کی‌بان در صنعت رستورانی، توسعه تصمیمات داده‌محور و هوش کسب و کار است. صنعت رستوران‌داری به واسطه زیرساخت‌های سنتی و نیمه‌سنتی موجود در آن (به خصوص در ایران) خلأ داده‌محوری را بیش از پیش حس می‌کند. نیاز به رصد و کنترل مواد مصرفی، مدیریت هزینه، قیمت‌گذاری و مهندسی منو در تحولات اخیر صنعت افزایش داشته است. به همین جهت، برای اولین بار، سرویس یکپارچه داده محوری رستورانی کی بان، مدیریت هزینه های خرید مواد اولیه، رصد دقیق گردش کالا، مهندسی منو و کنترل ضایعات را برای شما ممکن می کند.</p>
 
                     </div>
                   </div>
@@ -67,7 +103,7 @@
             <div class="wpb_column vc_column_container vc_col-sm-3">
               <div class="vc_column-inner">
                 <div class="wpb_wrapper">
-                  <div id="wd-62ac82420e904" class="wd-button-wrapper text-center"><a style="background: #B20909;" class=" btn btn-color-default btn-style-default btn-shape-semi-round btn-size-default">درخواست مشاوره</a></div>
+                  <div id="myBtn" class="wd-button-wrapper text-center"><a style="background: #B20909;" class=" btn btn-color-default btn-style-default btn-shape-semi-round btn-size-default">درخواست مشاوره</a></div>
                 </div>
               </div>
             </div>
@@ -158,16 +194,6 @@
 
 
 
-                  <div class="vc_row wpb_row vc_inner vc_row-fluid">
-                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                      <div class="vc_column-inner">
-                        <div class="wpb_wrapper">
-                          <div class="vc_empty_space" style="height: 100px"><span class="vc_empty_space_inner"></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid">
                     <div class="wpb_column vc_column_container vc_col-sm-12">
                       <div class="vc_column-inner">
@@ -205,8 +231,94 @@
         </div>
 
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <br>
+
+        <div class="vc_row wpb_row vc_inner">
+          <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                  <div class="wpb_wrapper">
+
+                    <input placeholder="ایمیل" type="text" class="form-control" name="text-1654619322539" access="false" id="text-1654619322539">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                  <div class="wpb_wrapper">
+
+                    <input placeholder="نام" type="text" class="form-control" name="text-1654619322538" access="false" id="text-1654619322538">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                  <div class="wpb_wrapper">
+
+                    <textarea placeholder="توضیحات شما" type="textarea" class="form-control" name="textarea-1654619413301" access="false" id="textarea-1654619413301">
+</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                  <div class="wpb_wrapper">
+                    <button type="button" class="btn-default btn" name="button-1654619463454" access="false" style="default" id="button-1654619463454">درخواست مشاوره</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
 
     </article><!-- #post -->
   </div><!-- .site-content -->
 </div>
+
 {% include "apps/templates/base/footer.html" %}
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>

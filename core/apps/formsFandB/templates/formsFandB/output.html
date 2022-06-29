@@ -1,29 +1,31 @@
 {% extends "apps/dashboard/templates/dashboard/layout.html" %}
 {% load static %}
-{% block content %}
 
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
+<script src="{% static 'js/kamadatepicker.js' %}"></script>
+<script src="{% static 'js/kamadatepicker.min.js' %}"></script>
+<script src="{% static 'js/kamadatepicker.holidays.js' %}"></script>
+<link href="{% static 'css/kamadatepicker.min.css'%}" rel="stylesheet" />
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
   <div class="col-md-8 col-sm-8 col-xs-12">
 
-    <h3> فرم ثبت خروج اقلام</h3>
-    <form class="boxed">
+
+
+    <h3> فرم ثبت ورود اقلام</h3>
+    <form method="post" id="OutputsForm" class="boxed">
+      {% csrf_token %}
 
       <br><br>
       <div class="row">
-        <input class="col-md-8 col-sm-8 col-xs-12 kbforms" list="inventory" name="browser" placeholder="قلم کالا">
-        <datalist id="inventory">
-          <option value="کالای 1">
-          <option value="کالای 2">
-          <option value="کالای 3">
-          <option value="کالای 4">
-          <option value="کالای 5">
-        </datalist>
+        {{ form.ProcurementID }}
       </div>
-
       <br><br>
+
       <div class="row">
-        <input class=" col-md-4 col-sm-4 col-xs-6 w40" type="text" id="value" name="value" placeholder="مقدار">
+        {{ form.TransferedQuantity }}
         <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="x" name="unit" value="x" checked="checked">
         <label class="unitcheck" for="x">واحد x</label>
         <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="y" name="unit" value="y">
@@ -34,29 +36,19 @@
       </div>
       <br><br>
       <div class="row">
-        <input class="kbforms col-md-4 col-sm-4 col-xs-6" type="date" id="date" name="date">
+        {{ form.TransferedDateJalali }}
       </div>
       <br><br>
       <div class="row">
-        <select class="col-md-8 col-sm-8 col-xs-12 kbforms" name="agent" id="agent">
-          <option value="" disabled selected>مسئول خروج</option>
-          <option value="1">آقای x</option>
-          <option value="2">آقای y</option>
-          <option value="3">خانم z</option>
-        </select>
+        {{ form.TransfereeAgent }}
       </div>
       <br><br>
       <div class="row">
-        <select class="col-md-8 col-sm-8 col-xs-12 kbforms" name="outto" id="outto">
-          <option value="" disabled selected>خروج به...</option>
-          <option value="1">انبار</option>
-          <option value="2">آشپزخانه</option>
-          <option value="3">آماده‌سازی</option>
-        </select>
+        {{ form.FromInventoryID }}
       </div>
       <br><br>
       <div class="row">
-        <input class="col-md-8 col-sm-8 col-xs-12" type="submit" value="ثبت">
+        <input class="col-md-8 col-sm-8 col-xs-12" type="submit" name="OutputsForm" form="OutputsForm" value="ثبت">
       </div>
     </form>
 
@@ -64,6 +56,12 @@
 
 
   </div>
+  <script type="text/javascript">
+    kamaDatepicker('TransferedDateJalali', {
+      buttonsColor: "red",
+      forceFarsiDigits: true
+    });
+  </script>
 </div>
 
 <!-- /page content -->

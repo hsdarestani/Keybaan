@@ -1451,10 +1451,7 @@ a.hiddenanchor {
   background: #f5f7fa
 }
 
-.tile-stats, footer {
-  background: #fff;
-  display: block
-}
+
 
 .line_30 {
   line-height: 30px
@@ -4110,10 +4107,11 @@ div[data-role=editor-toolbar] {
 }
 
 .select2-container--default .select2-selection--single {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0;
-  min-height: 38px
+  background-color: #EEEEEE !important;
+  border: 0px !important;
+  border-radius: 20px !important;
+  height: 50px !important;
+  padding: 10px !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {

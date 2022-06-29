@@ -8,9 +8,9 @@ class TicketStatus(models.TextChoices):
  DONE = 'تکمیل'
 
 class Ticket(models.Model):
- title = models.CharField(max_length=100)
- assignee = models.ForeignKey(User, null=True, blank = True, on_delete=models.CASCADE)
+ title = models.CharField(max_length=100, verbose_name="عنوان")
+ assignee = models.ForeignKey(User, null=True, blank = True, on_delete=models.CASCADE, verbose_name="بخش")
  status = models.CharField(max_length=25, choices=TicketStatus.choices, default=TicketStatus.TO_DO)
- description = models.TextField()
+ description = models.TextField( verbose_name="متن تیکت")
  created_at = models.DateTimeField('ایجاد شده در', auto_now_add=True)
  updated_at = models.DateTimeField('به روز شده در', auto_now=True)

@@ -13,6 +13,3 @@ class ContactUsForm(ModelForm):
             super(ContactUsForm, self).__init__(*args, **kwargs)
             for visible in self.visible_fields():
                 visible.field.widget.attrs['class'] = 'contactus'
-
-            self.fields['description'].widget.attrs.update({
-                'rows': '5'})

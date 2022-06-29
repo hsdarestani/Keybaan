@@ -43,8 +43,7 @@ def contactform(request):
     context ={
         "form" : form,
         }
-    html_template = loader.get_template('apps/home/templates/home/contactform.html')
-    return HttpResponse(html_template.render(context, request))
+    return render(request, 'apps/home/templates/home/index.html', context)
 
 def contact(request):
     context = {'segment': 'contact'}

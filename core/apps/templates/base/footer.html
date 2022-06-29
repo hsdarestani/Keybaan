@@ -11,7 +11,7 @@
 					<div class="wpb_wrapper">
 						<div class="vc_row wpb_row vc_inner vc_row-fluid">
 							<div class="wpb_column vc_column_container vc_col-sm-6 vc_col-xs-12 text-center wd-rs-628b644eebb88">
-								<div class="vc_column-inner">
+								<div class="vc_column-inner" style="padding-left: 0px !important;padding-right: 0px !important;">
 									<div class="wpb_wrapper">
 										<link rel="stylesheet" id="wd-list-css" href="https://ilkan.co/wp-content/themes/woodmart/css/parts/el-list-rtl.min.css?ver=6.3.2" type="text/css" media="all" />
 										<ul class=" wd-rs-628b6ee026729 wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-right listfoot " id="wd-628b6ee026729">
@@ -25,7 +25,7 @@
 								</div>
 							</div>
 							<div class="wpb_column vc_column_container vc_col-sm-3 vc_col-xs-6 text-center wd-rs-628b645774081">
-								<div class="vc_column-inner">
+								<div class="vc_column-inner" style="padding-left: 0px !important;padding-right: 0px !important;">
 									<div class="wpb_wrapper">
 										<ul class=" wd-rs-629f8f6bea807 wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-right listfoot " id="wd-629f8f6bea807">
 											<li>
@@ -38,7 +38,7 @@
 								</div>
 							</div>
 							<div class="wpb_column vc_column_container vc_col-sm-3 vc_col-xs-6 text-center wd-rs-628b645403616">
-								<div class="vc_column-inner">
+								<div class="vc_column-inner" style="padding-left: 0px !important;padding-right: 0px !important;">
 									<div class="wpb_wrapper">
 										<ul class=" wd-rs-628b6eef5b00c wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-right listfoot " id="wd-628b6eef5b00c">
 											<li>
@@ -66,16 +66,14 @@
 							class="nav-link-text">خانه</span></a></li>
 				<li id="menu-item-15670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-15670 item-level-0 menu-item-design-default menu-simple-dropdown wd-event-hover"><a href="#"
 						class="woodmart-nav-link"><span class="nav-link-text">صنایع</span></a>
-					<div class="color-scheme-dark wd-design-default wd-dropdown-menu wd-dropdown sub-menu-dropdown">
-						<div class="container">
-							<ul class="wd-sub-menu sub-menu color-scheme-dark">
-								<li id="menu-item-15671" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15671 item-level-1"><a href="https://ilkan.co/industries-advertisement/" class="woodmart-nav-link">تبلیغات</a></li>
-								<li id="menu-item-15674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15674 item-level-1"><a href="https://ilkan.co/industries-hospitality/" class="woodmart-nav-link">هتل و رستوران</a></li>
-								<li id="menu-item-15672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15672 item-level-1"><a href="https://ilkan.co/industries-building/" class="woodmart-nav-link">ساختمان</a></li>
-								<li id="menu-item-15673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15673 item-level-1"><a href="https://ilkan.co/industries-steel/" class="woodmart-nav-link">فولاد</a></li>
-							</ul>
-						</div>
-					</div>
+																<div class=" wd-dropdown sub-menu-dropdown">
+												<div class="container">
+													<ul class="wd-sub-menu sub-menu">
+														<li><a href="{% url 'home:advertisement' %}" class="woodmart-nav-link">تبلیغات</a></li>
+														<li><a href="{% url 'home:FandB' %}" class="woodmart-nav-link">هتل و رستوران</a></li>
+													</ul>
+												</div>
+											</div>
 				</li>
 				<li id="menu-item-5292" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5292 item-level-0 menu-simple-dropdown wd-event-hover onepage-link"><a href="{% url 'home:services' %}" class="woodmart-nav-link"><span
 							class="nav-link-text">سرویس‌ها</span></a></li>
@@ -92,7 +90,10 @@
 			<p style="text-align: center;"><em>All rights are reserved © 2022, Keybaan</em></p>
 
 		</div>
-
+<style>.wd-nav{
+justify-content: center;
+}
+</style>
 	</div>
 
 </div>

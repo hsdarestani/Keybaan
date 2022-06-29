@@ -1,10 +1,10 @@
 .kbforms {
-  width: 100%;
-  background-color: #EEEEEE;
-  border: 0px;
-  border-radius: 20px;
-  height: 50px;
-  padding: 10px;
+  width: 100% !important;
+  background-color: #EEEEEE !important;
+  border: 0px !important;
+  border-radius: 20px !important;
+  height: 50px !important;
+  padding: 10px !important;
 }
 
 .boxed .w40 {
@@ -96,6 +96,9 @@
 
 
 
+  .boxed .insul {
+    text-align: right;
+  }
 
   .boxed .boardul {
     text-align: right;
@@ -133,7 +136,7 @@
 
   .boxed p {
     color: #333;
-    text-align: left;
+    text-align: right;
     font-family: 'hm_light', sans-serif;
     font-size: 14px;
     .boardline-height: 1.45;
@@ -205,7 +208,7 @@
     position: absolute;
     cursor: pointer;
     width: 100%;
-    height: 100%;
+    height: 60%;
     z-index: 1;
     opacity: 0;
     touch-action: manipulation;
@@ -248,4 +251,86 @@
   ul {
     padding: 0;
     .boardlist-style: none;
+  }
+
+  .boxed .insul {
+    .inslist-style: none;
+    perspective: 900;
+    padding: 0;
+    margin: 0;
+  }
+
+  .boxed .insul .insli {
+    position: relative;
+    overflow: inherit;
+    padding: 0;
+    margin: 0;\
+    height:200px;
+    /*padding-bottom: 4px;*/
+    /*padding-top: 18px;*/
+    background: #fff;
+    box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.1);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .boxed .insul .insli+.insli {
+    margin-top: 15px;
+  }
+
+  .boxed .insul .insli:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .boxed .insul .insli i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 20px;
+    left: 20px;
+  }
+
+  .boxed .insul .insli i:before,
+  .insul .insli i:after {
+    content: "";
+    position: absolute;
+    background-color: #cc071e;
+    width: 3px;
+    height: 9px;
+  }
+
+  .boxed .insul .insli i:before {
+    transform: translate(-2px, 0) rotate(45deg);
+  }
+
+  .boxed .insul .insli i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+  }
+
+  .boxed .insul .insli input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 60%;
+    z-index: 1;
+    opacity: 0;
+    touch-action: manipulation;
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~h2 {
+    color: #000;
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~p {
+    /*margin-top: 0;*/
+    max-height: 0;
+    transition: .3s;
+    opacity: 0;
+    /*transform: translate(0, 50%);*/
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~i:before {
+    transform: translate(2px, 0) rotate(45deg);
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~i:after {
+    transform: translate(-2px, 0) rotate(-45deg);
   }

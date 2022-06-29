@@ -578,7 +578,7 @@ function kamaDatepicker(elementID, opt) {
   var fixDate = function (date) {
     if (date === '') return '';
 
-    date = date.split('/');
+    date = date.split('-');
     // if (date[0].length === 2) {
     //     date[0] = "13" + date[0];
     // }
@@ -592,7 +592,7 @@ function kamaDatepicker(elementID, opt) {
         date[2] = '0' + date[2];
       }
     }
-    date = date.join('/');
+    date = date.join('-');
     return date;
   };
 
@@ -699,9 +699,9 @@ function kamaDatepicker(elementID, opt) {
     var firstDayOfMonthG = toGregorian(selectedYear, selectedMonth, 1);
     firstDayOfMonthG = new Date(
       firstDayOfMonthG.gy +
-        '/' +
+        '-' +
         firstDayOfMonthG.gm +
-        '/' +
+        '-' +
         firstDayOfMonthG.gd
     );
     return convertToJWeek(firstDayOfMonthG.getDay());
@@ -813,9 +813,9 @@ function kamaDatepicker(elementID, opt) {
   inputElement.parent().on('click', 'button.day', function () {
     var datestr =
       selectedYear +
-      '/' +
+      '-' +
       selectedMonth +
-      '/' +
+      '-' +
       $(this)
         .attr('class')
         .split(' ')

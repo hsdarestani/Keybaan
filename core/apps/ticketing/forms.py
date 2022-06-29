@@ -11,6 +11,8 @@ class ticketform(ModelForm):
 
         def __init__(self, *args, **kwargs):
             super(ticketform, self).__init__(*args, **kwargs)
-
+            for visible in self.visible_fields():
+                visible.field.widget.attrs['class'] = 'kbforms'
+                
             self.fields['description'].widget.attrs.update({
                 'rows': '5'})

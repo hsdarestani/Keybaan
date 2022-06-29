@@ -1,17 +1,18 @@
 {% extends "apps/dashboard/templates/dashboard/layout.html" %}
 {% load static %}
 {% block content %}
-
+<link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
   <div class="col-md-8 col-sm-8 col-xs-12">
 
     <h3>ثبت تیکت جدید</h3>
     <br>
-
-    {{ form.as_table }}
-    {% csrf_token %}
-
-    <input class="col-md-8 col-sm-8 col-xs-12" type="submit" value="ثبت">
+    <form class="boxed">
+      {{ form.as_table }}
+      {% csrf_token %}
+      <br><br>
+      <input class="col-md-8 col-sm-8 col-xs-12" type="submit" value="ثبت">
+    </form>
   </div>
 </div>
 
