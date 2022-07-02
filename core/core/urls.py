@@ -24,4 +24,5 @@ urlpatterns = [
     path("", include("apps.formsOOH.urls")) ,
     path("", include("apps.formsFandB.urls")) ,
     path("", include("apps.ticketing.urls")),
+    path('mblog/', include('apps.blog.urls')),
 ]

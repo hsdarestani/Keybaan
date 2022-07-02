@@ -7,7 +7,7 @@ from django.urls import reverse
 from .forms import *
 from django.contrib import messages
 from .decorators import *
-from apps.formsOOH.models import Customers,Boards,Agents,ContractDetailsPerBoard, Installment
+from apps.formsOOH.models import Customers,Boards,Agents,ContractDetailsPerBoard, Installment,Contracts
 from django.forms import formset_factory
 
 @login_required
@@ -19,10 +19,9 @@ def contract(request):
     # formset3 = form3(request.POST)
     form2 = ContractDetailsPerBoardForm()
     form3 = InstallmentForm()
-    # obj = get_object_or_404(Installment)
     form2set = formset_factory(ContractDetailsPerBoardForm)
     form3set = formset_factory(InstallmentForm)
-    # qs = obj.Installment_set # []
+
     formset2 = form2set(request.POST or None,prefix='formset2')
     formset = form3set(request.POST or None,prefix='formset3')
     form4 = CustomersForm()
@@ -52,17 +51,20 @@ def contract(request):
             obj.EntryAgent = user
             obj.Company_id = company
             obj.save()
+            conb = Contracts.objects.get(ContractNumber = obj.ContractNumber) # []
             # for formx2 in formset2:
             # obj2 = form2.save(commit=False)
             # obj2.EntryAgent = user
             # obj2.Company_id = company
             # obj2.save()
+            print (conb)
             for form2 in formset2:
                 obj2 = form2.save(commit=False)
                 # for ins in formset3:
                 #     ins.EntryAgent = user
                 #     ins.Company_id = company
                 #     ins.save()
+                obj2.ContractID = conb
                 obj2.EntryAgent = user
                 obj2.Company_id = company
                 obj2.save()
@@ -72,6 +74,7 @@ def contract(request):
                 #     ins.EntryAgent = user
                 #     ins.Company_id = company
                 #     ins.save()
+                obj3.ContractID = conb
                 obj3.EntryAgent = user
                 obj3.Company_id = company
                 obj3.save()

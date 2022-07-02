@@ -175,7 +175,7 @@ class Agents(models.Model):
         verbose_name_plural = "مسئول‌ها"
 
     def __str__(self):
-        return str(self.AgentFirstName) + str(self.AgentLastName)
+        return str(self.AgentFirstName) + ' ' + str(self.AgentLastName)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -246,6 +246,9 @@ class Contracts(models.Model):
 
     def __str__(self):
         return self.ContractNumber
+
+    def getid(self):
+        return self.id
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -322,7 +325,7 @@ class Installment(models.Model):
         verbose_name_plural = "اقساط"
 
     def __str__(self):
-        return str(self.ContractID) + str(self.InstallmentNumber)
+        return str(self.ContractID) + ' ' + str(self.InstallmentNumber)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)

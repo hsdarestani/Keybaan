@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'apps.useraccount',
     'apps.dashboard',
     'apps.ticketing',
-    'apps.blogapp',
-    'crispy_forms',
+    'apps.blog',
+
 ]
 
 MIDDLEWARE = [
@@ -141,11 +141,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# # درحالت تست فعال
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 
-MEDIA_URL = '/media/'
 
-# درحالت تست فعال
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

@@ -14,8 +14,10 @@ $(document).ready(function() {
 	// $(Counttargeti).append(' ' + y); //add input box
 	var checkboxdata      = $(".checkboxdata"); //Add button ID
 
-	const TotalForms = document.getElementById('id_form-INITIAL_FORMS')
-	TotalForms.setAttribute('value',0)
+	const TotalForms2 = document.getElementById('id_formset2-TOTAL_FORMS')
+	TotalForms2.setAttribute('value',0)
+	const TotalForms3 = document.getElementById('id_formset3-TOTAL_FORMS')
+	TotalForms3.setAttribute('value',0)
 
 
 	$(add_button_board).click(function(e){ //on add input button click
@@ -36,9 +38,13 @@ $(document).ready(function() {
 			const regex = new RegExp('__prefix__','g')
 			EmptyForm.innerHTML = EmptyForm.innerHTML.replace(regex,CountForms)
 			TotalNewForms.setAttribute('value',Titl)
+			SeacrhableClass = EmptyForm.querySelector(`#id_formset2-${CountForms}-BoardID`);
+			SeacrhableClass.setAttribute('class','searchable');
+			$(EmptyForm).append('<script type="text/javascript">$(document).ready(function() {$(".searchable").select2();});</script>');
 			$(TargetForm).append(EmptyForm); //add input box
 			Counttarget = EmptyForm.querySelector('#btitle');
 			$(Counttarget).append(' ' + Titl ); //add input box
+
 
 
 		});
@@ -64,7 +70,7 @@ $(document).ready(function() {
 
 		});
 	$(TargetForm).on("click",".remove_field", function(e){ //user click on remove text
-		e.preventDefault(); $(this).parent('li').remove(); x--;
+		e.preventDefault(); $(this).parent('li').remove();
 	})
 	$(TargetFormi).on("click",".remove_field", function(e){ //user click on remove text
 		e.preventDefault(); $(this).parent('li').remove();

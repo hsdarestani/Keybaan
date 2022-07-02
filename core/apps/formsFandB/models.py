@@ -261,7 +261,7 @@ class RecipeIngredients(models.Model):
         verbose_name_plural = "جزئیات دستورهای پخت"
 
     def __str__(self):
-        return str(self.RecipeID) + str(self.CommodityID)
+        return str(self.RecipeID) + ' ' + str(self.CommodityID)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -299,7 +299,7 @@ class InventoryList(models.Model):
         verbose_name_plural = "لیست انبار"
 
     def __str__(self):
-        return str(self.InventoryID) + str(self.ProcurementID) + str(self.RemainingPackageCount) + str(self.UpdateDate)
+        return str(self.InventoryID) + ' ' + str(self.ProcurementID) + ' ' + str(self.RemainingPackageCount) + ' ' + str(self.UpdateDate)
 
     def jEntryDate(self):
         return jalali_converter(self.UpdateDate)
@@ -322,7 +322,7 @@ class Outputs(models.Model):
         verbose_name_plural = "خروجی‌ها"
 
     def __str__(self):
-        return str(self.ProcurementID) + str(self.FromInventoryID) + str(self.TransferedDateJalali)
+        return str(self.ProcurementID) + ' ' + str(self.FromInventoryID) + ' ' + str(self.TransferedDateJalali)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -346,7 +346,7 @@ class Inputs(models.Model):
         verbose_name_plural = "ورودی‌ها"
 
     def __str__(self):
-        return str(self.ProcurementID) + str(self.ToInventoryID) + str(self.TransferedDateJalali)
+        return str(self.ProcurementID) + ' ' + str(self.ToInventoryID) + ' ' + str(self.TransferedDateJalali)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -368,7 +368,7 @@ class Sales(models.Model):
         verbose_name_plural = "فروش"
 
     def __str__(self):
-        return str(self.FoodName) + str(self.Quantity) + str(self.EntryDate)
+        return str(self.FoodName) + ' ' + str(self.Quantity) + ' ' + str(self.EntryDate)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -388,7 +388,7 @@ class Orders(models.Model):
         verbose_name_plural = "سفارشات"
 
     def __str__(self):
-        return str(self.OrderDate) + str(self.Hour) + str(self.ItemCategory)
+        return str(self.OrderDate) + ' ' + str(self.Hour) + ' ' + str(self.ItemCategory)
 
     def jEntryDate(self):
         return jalali_converter(self.OrderDate)
