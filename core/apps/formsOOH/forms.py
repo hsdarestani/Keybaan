@@ -73,9 +73,9 @@ class ContractDetailsPerBoardForm(ModelForm):
         self.fields['JalaliStart'].widget.attrs['class'] = 'kbforms JalaliStart'
         self.fields['JalaliFinish'].widget.attrs['class'] = 'kbforms JalaliFinish'
         self.fields['AgentNameID'].widget.attrs['class'] = 'searchable kbforms'
-        self.fields['BoardID'].widget.attrs['class'] = 'searchable kbforms'
-        self.fields['JalaliStart'].widget.attrs['id'] = 'JalaliStart'
-        self.fields['JalaliFinish'].widget.attrs['id'] = 'JalaliFinish'
+        self.fields['BoardID'].widget.attrs['class'] = 'kbforms'
+        # self.fields['JalaliStart'].widget.attrs['id'] = 'JalaliStart'
+        # self.fields['JalaliFinish'].widget.attrs['id'] = 'JalaliFinish'
 
 class InstallmentForm(ModelForm):
     class Meta:
@@ -88,6 +88,6 @@ class InstallmentForm(ModelForm):
         self.fields['Installment'].widget.attrs['placeholder'] = 'مبلغ قسط (ریال)'
         self.fields['InstallmentNumber'].widget.attrs['placeholder'] = 'نوبت قسط'
         self.fields['PaymentDateJalali'].widget.attrs['placeholder'] = 'تاریخ پرداخت'
-        self.fields['PaymentDateJalali'].widget.attrs['id'] = 'PaymentDateJalali'
+        # self.fields['PaymentDateJalali'].widget.attrs['id'] = 'PaymentDateJalali'
         self.fields['PaymentDateJalali'].widget.attrs['class'] = 'kbforms PaymentDateJalali'
         self.fields['PaymentDateJalali'].widget.attrs['readonly'] = 'readonly'

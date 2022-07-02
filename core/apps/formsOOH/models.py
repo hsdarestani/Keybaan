@@ -328,5 +328,5 @@ class Installment(models.Model):
         return jalali_converter(self.EntryDate)
     jEntryDate.short_description = "تاریخ ثبت رکورد"
 
-    def get_installment(self):
-        return self.Installment.all()
+    def Installment_set(self):
+        return self.Installment_set.all()

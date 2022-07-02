@@ -8,7 +8,7 @@ from .forms import *
 from django.contrib import messages
 from .decorators import *
 from apps.formsOOH.models import Customers,Boards,Agents,ContractDetailsPerBoard, Installment
-from django.forms import modelformset_factory
+from django.forms import formset_factory
 
 @login_required
 @OOH_user
@@ -19,9 +19,12 @@ def contract(request):
     # formset3 = form3(request.POST)
     form2 = ContractDetailsPerBoardForm()
     form3 = InstallmentForm()
-    form3set = modelformset_factory(Installment, form=InstallmentForm)
-    # qs = Installment.objects.filter(EntryAgent = request.user.profile) # []
-    formset = form3set(request.POST or None )
+    # obj = get_object_or_404(Installment)
+    form2set = formset_factory(ContractDetailsPerBoardForm)
+    form3set = formset_factory(InstallmentForm)
+    # qs = obj.Installment_set # []
+    formset2 = form2set(request.POST or None,prefix='formset2')
+    formset = form3set(request.POST or None,prefix='formset3')
     form4 = CustomersForm()
     form1.fields["CustomerID"].queryset = Customers.objects.filter(Company_id=request.user.profile.company_id)
     form2.fields["BoardID"].queryset = Boards.objects.filter(Company_id=request.user.profile.company_id)
@@ -44,18 +47,27 @@ def contract(request):
         form1 = ContractsForm(request.POST)
         form2 = ContractDetailsPerBoardForm(request.POST)
         form3 = InstallmentForm(request.POST)
-        if all([form1.is_valid(),form2.is_valid(),formset.is_valid()]):
+        if all([form1.is_valid(),formset2.is_valid(),formset.is_valid()]):
             obj = form1.save(commit=False)
             obj.EntryAgent = user
             obj.Company_id = company
             obj.save()
             # for formx2 in formset2:
-            obj2 = form2.save(commit=False)
-            obj2.EntryAgent = user
-            obj2.Company_id = company
-            obj2.save()
+            # obj2 = form2.save(commit=False)
+            # obj2.EntryAgent = user
+            # obj2.Company_id = company
+            # obj2.save()
+            for form2 in formset2:
+                obj2 = form2.save(commit=False)
+                # for ins in formset3:
+                #     ins.EntryAgent = user
+                #     ins.Company_id = company
+                #     ins.save()
+                obj2.EntryAgent = user
+                obj2.Company_id = company
+                obj2.save()
             for form in formset:
-                obj3 = formset.save(commit=False)
+                obj3 = form.save(commit=False)
                 # for ins in formset3:
                 #     ins.EntryAgent = user
                 #     ins.Company_id = company
@@ -87,6 +99,7 @@ def contract(request):
     context={
         'form1':form1,
         'form2':form2,
+        'formset2' : formset2,
         'form3':form3,
         'formset':formset,
         'form4':form4,

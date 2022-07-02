@@ -9,6 +9,11 @@
 <script src="{% static 'js/kamadatepicker.holidays.js' %}"></script>
 <link href="{% static 'css/kamadatepicker.min.css'%}" rel="stylesheet" />
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
+<style media="screen">
+  .hidden {
+    display: none;
+  }
+</style>
 <div class="right_col" role="main">
   <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -194,7 +199,13 @@
           <div id="step-2" class="content" style="display: none;">
 
             <ul class="boardul">
-              <li id="boardli" class="boardli">
+              {{ formset2.management_form }}
+
+
+              <div class="input_fields_wrap_board">
+
+              </div>
+              <li id="boardli" class="boardli hidden">
                 <input type="checkbox" checked class="checkboxdata">
 
                 <i></i>
@@ -203,43 +214,35 @@
                 </h4>
                 <p>
                   <br><br>
-
-
                   <span class="row">
                     <style media="screen">
                       .boardli .select2-container {
                         width: 100% !important;
                       }
                     </style>
-                    {{ form2.BoardID.label }}
-                    {{ form2.BoardID }}
+                    {{ formset2.empty_form.BoardID.label }}
+                    {{ formset2.empty_form.BoardID }}
                   </span>
                   <br>
                   <span class="row">
-                    {{ form2.JalaliStart.label }}
-                    {{ form2.JalaliStart }}
+                    {{ formset2.empty_form.JalaliStart.label }}
+                    {{ formset2.empty_form.JalaliStart }}
 
                   </span>
                   <br>
                   <span class="row">
-                    {{ form2.JalaliFinish.label }}
-                    {{ form2.JalaliFinish }}
+                    {{ formset2.empty_form.JalaliFinish.label }}
+                    {{ formset2.empty_form.JalaliFinish }}
 
                   </span>
                   <br>
                   <span class="row">
-                    {{ form2.BoardContractPrice.label }}
-                    {{ form2.BoardContractPrice }}
+                    {{ formset2.empty_form.BoardContractPrice.label }}
+                    {{ formset2.empty_form.BoardContractPrice }}
                   </span>
                   <br>
-
                 </p>
               </li>
-
-
-              <div class="input_fields_wrap_board">
-
-              </div>
             </ul>
 
             <br>
@@ -260,13 +263,14 @@
             </div>
             <br><br>
             <ul class="insul">
-              {formset.formset_management}
-              {% for form3 in formset %}
-              <li id="insli" class="insli">
+              {{ formset.management_form }}
+
+
+              <!-- <li class="insli">
                 <input type="checkbox" checked>
                 <i></i>
                 <h4 id="ititle">
-                  قسط
+                  قسط 1
                 </h4>
                 <p>
                   <span class="row">
@@ -287,37 +291,38 @@
 
                   <br><br>
                 </p>
-              </li>
-              {% endfor %}
-              <li id="insli" class="insli">
-                <input type="checkbox" checked>
-                <i></i>
-                <h4 id="ititle">
-                  قسط
-                </h4>
-                <p>
-                  <span class="row">
-                    {{ form3.Installment.label }}
-                    {{ form3.Installment }}
-                    <br>
-                  </span>
-                  <span class="row">
-                    {{ form3.InstallmentNumber.label }}
-                    {{ form3.InstallmentNumber }}
-                    <br>
-                  </span>
-                  <span class="row">
-                    {{ form3.PaymentDateJalali.label }}
-                    {{ form3.PaymentDateJalali }}
-                    <br>
-                  </span>
+              </li> -->
 
-                  <br><br>
-                </p>
-              </li>
+
+
               <div class="input_fields_wrap_installment">
 
               </div>
+              <li id="insli" class="insli hidden">
+                <input type="checkbox" checked>
+                <i></i>
+                <h4 id="ititle">
+                  قسط
+                </h4>
+                <p>
+                  <span class="row">
+                    {{ formset.empty_form.Installment.label }}
+                    {{ formset.empty_form.Installment }}
+                    <br>
+                  </span>
+                  <span class="row">
+                    {{ formset.empty_form.InstallmentNumber.label }}
+                    {{ formset.empty_form.InstallmentNumber }}
+                    <br>
+                  </span>
+                  <span class="row">
+                    {{ formset.empty_form.PaymentDateJalali.label }}
+                    {{ formset.empty_form.PaymentDateJalali }}
+                    <br>
+                  </span>
+                  <br><br>
+                </p>
+              </li>
             </ul>
             <br>
             <button class="add_field_button_installment col-md-2 col-sm-2 col-xs-2 addCs" type="button" name="addCs">+</button>
@@ -363,11 +368,12 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <br>
-    <form class="" id="AddCustomer" method="post">
+    <form class="boxed" id="AddCustomer" method="post">
       {% csrf_token %}
 
       {{ form4.CustomerName.label }}
       {{ form4.CustomerName }}
+      <br><br>
       <input form="AddCustomer" type="submit" name="AddCustomer" value="ثبت">
     </form>
   </div>

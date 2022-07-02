@@ -72,6 +72,6 @@ class CustomerPaymentMethodAdmin(admin.ModelAdmin):
 admin.site.register(CustomerPaymentMethod, CustomerPaymentMethodAdmin)
 
 class InstallmentAdmin(admin.ModelAdmin):
-    list_display = ('ContractID','InstallmentNumber','InstallmentNumber','CustomerPaymentMethodID','PaymentDate','PaymentDateJalali','jEntryDate')
-    search_fields = ('ContractID','InstallmentNumber','InstallmentNumber','CustomerPaymentMethodID','PaymentDate','PaymentDateJalali','jEntryDate')
+    list_display = ('ContractID','Installment','InstallmentNumber','CustomerPaymentMethodID','PaymentDate','PaymentDateJalali','jEntryDate')
+    search_fields = ('ContractID','Installment','InstallmentNumber','CustomerPaymentMethodID','PaymentDate','PaymentDateJalali','jEntryDate')
 admin.site.register(Installment, InstallmentAdmin)
