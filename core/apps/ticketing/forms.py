@@ -7,12 +7,13 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field
 class ticketform(ModelForm):
         class Meta:
             model = Ticket
-            fields = ['title','assignee','description']
+            fields = ['title','assignee','description','created_by']
 
         def __init__(self, *args, **kwargs):
             super(ticketform, self).__init__(*args, **kwargs)
             for visible in self.visible_fields():
                 visible.field.widget.attrs['class'] = 'kbforms'
-                
+
+            self.fields['description'].widget.attrs['class'] = 'kbforms2'
             self.fields['description'].widget.attrs.update({
-                'rows': '5'})
+                'rows': '10'})

@@ -10,7 +10,7 @@
 <link href="{% static 'css/kamadatepicker.min.css'%}" rel="stylesheet" />
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
-  <div class="col-md-8 col-sm-8 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
     <h3> فرم ثبت قرارداد</h3>
     {% for message in messages %}
@@ -60,6 +60,7 @@
             {{ form.non_field_errors }}
             <br><br>
             <div class="row">
+              {{ form2.AgentNameID.label }}<br>
               {{ form2.AgentNameID }}
               <!--      <input class="col-md-8 col-sm-8 col-xs-12 kbforms" list="agentID" name="agentID" placeholder="مسئول فروش">
               <datalist id="agentID">
@@ -74,6 +75,13 @@
             </div>
             <br><br>
             <div class="row">
+              <style media="screen">
+                #select2-data-3-htai {
+                  width: 80% !important;
+                }
+              </style>
+
+              {{ form1.CustomerID.label }}<br>
               {{ form1.CustomerID }}
               <!--
               <input class="col-md-6 col-sm-6 col-xs-10 kbforms CsSelc" list="CustomerID" name="CustomerID" placeholder="نام مشتری">
@@ -86,8 +94,7 @@
               </datalist>
               -->
 
-              <button id="myBtn" class="col-md-2 col-sm-2 col-xs-2  addCs" type="button" name="addCs">+</button>
-
+              <button id="myBtn" class="addCs" type="button" name="addCs">+</button>
 
               <style>
                 /* The Modal (background) */
@@ -141,11 +148,13 @@
 
               <br><br>
               <div class="row">
+                {{ form1.ContractNumber.label }}<br>
                 {{ form1.ContractNumber }}
                 <!-- <input class=" col-md-8 col-sm-8 col-xs-12 kbforms" type="text" id="value" name="value" placeholder="شماره قرارداد"> -->
               </div>
               <br><br>
               <div class="row">
+                {{ form1.ContractConfirmDateJalali.label }}<br>
                 {{ form1.ContractConfirmDateJalali }}
                 <!--
                 <input class="col-md-4 col-sm-4 col-xs-6 kbforms" type="text" readonly="readonly" placeholder="تاریخ ثبت قرارداد" id="ContractSubmitJalali">
@@ -184,49 +193,48 @@
           </div>
           <div id="step-2" class="content" style="display: none;">
 
-
             <ul class="boardul">
               <li id="boardli" class="boardli">
-                <input type="checkbox" checked>
+                <input type="checkbox" checked class="checkboxdata">
 
                 <i></i>
                 <h4 id="btitle">
                   تابلوی
                 </h4>
                 <p>
-                  <span class="row">
-                    <span class="wpcf7-form-control-wrap locationname"><select name="locationname" class="kbnforms" id="locationname" aria-invalid="false" data-select2-id="locationname" tabindex="-1" aria-hidden="true">
-                        <option value="3059" data-select2-id="5">یادگار امام</option>
-                        <option value="3060">ولیعصر-ساعی</option>
-                        <option value="3061">عباس اباد</option>
-                        <option value="3062">امیرآباد</option>
-
-                      </select>
-                    </span>
-                  </span>
                   <br><br>
+
+
                   <span class="row">
+                    <style media="screen">
+                      .boardli .select2-container {
+                        width: 100% !important;
+                      }
+                    </style>
+                    {{ form2.BoardID.label }}
                     {{ form2.BoardID }}
                   </span>
                   <br>
                   <span class="row">
+                    {{ form2.JalaliStart.label }}
                     {{ form2.JalaliStart }}
 
                   </span>
                   <br>
                   <span class="row">
+                    {{ form2.JalaliFinish.label }}
                     {{ form2.JalaliFinish }}
 
                   </span>
                   <br>
                   <span class="row">
+                    {{ form2.BoardContractPrice.label }}
                     {{ form2.BoardContractPrice }}
                   </span>
                   <br>
 
                 </p>
               </li>
-
 
 
               <div class="input_fields_wrap_board">
@@ -236,22 +244,24 @@
 
             <br>
             <button class="add_field_button_board col-md-2 col-sm-2 col-xs-2 addCs" type="button" name="addCs">+</button>
-
-
           </div>
           <div id="step-3" class="content" style="display: none;">
 
 
             <br><br>
             <div class="row">
+              {{ form1.ContractPrice.label }}
               {{ form1.ContractPrice }}
             </div>
             <br><br>
             <div class="row">
+              {{ form1.PrePayment.label }}
               {{ form1.PrePayment }}
             </div>
             <br><br>
             <ul class="insul">
+              {formset.formset_management}
+              {% for form3 in formset %}
               <li id="insli" class="insli">
                 <input type="checkbox" checked>
                 <i></i>
@@ -260,14 +270,44 @@
                 </h4>
                 <p>
                   <span class="row">
+                    {{ form3.Installment.label }}
                     {{ form3.Installment }}
                     <br>
                   </span>
                   <span class="row">
+                    {{ form3.InstallmentNumber.label }}
                     {{ form3.InstallmentNumber }}
                     <br>
                   </span>
                   <span class="row">
+                    {{ form3.PaymentDateJalali.label }}
+                    {{ form3.PaymentDateJalali }}
+                    <br>
+                  </span>
+
+                  <br><br>
+                </p>
+              </li>
+              {% endfor %}
+              <li id="insli" class="insli">
+                <input type="checkbox" checked>
+                <i></i>
+                <h4 id="ititle">
+                  قسط
+                </h4>
+                <p>
+                  <span class="row">
+                    {{ form3.Installment.label }}
+                    {{ form3.Installment }}
+                    <br>
+                  </span>
+                  <span class="row">
+                    {{ form3.InstallmentNumber.label }}
+                    {{ form3.InstallmentNumber }}
+                    <br>
+                  </span>
+                  <span class="row">
+                    {{ form3.PaymentDateJalali.label }}
                     {{ form3.PaymentDateJalali }}
                     <br>
                   </span>
@@ -281,8 +321,8 @@
             </ul>
             <br>
             <button class="add_field_button_installment col-md-2 col-sm-2 col-xs-2 addCs" type="button" name="addCs">+</button>
-
-
+          </div>
+        </div>
     </form>
   </div>
   <script type="text/javascript">
@@ -310,12 +350,8 @@
     });
   </script>
 </div>
-<div class="actionBar">
-  <div class="msgBox">
-    <div class="content"></div><a href="#" class="close">X</a>
-  </div>
-</div>
-</div>
+
+
 
 
 
@@ -336,7 +372,7 @@
     </form>
   </div>
 </div>
-</div>
+
 
 
 <!-- /page content -->

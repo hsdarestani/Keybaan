@@ -10,7 +10,7 @@
 <link href="{% static 'css/kamadatepicker.min.css'%}" rel="stylesheet" />
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
-  <div class="col-md-8 col-sm-8 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
     <h3> فرم فسخ قرارداد</h3>
     {% for message in messages %}
@@ -24,6 +24,7 @@
       {% csrf_token %}
       <br><br>
       <span class="row">
+        {{ form.ContractNumber.label }}
         {{ form.ContractNumber }}
       </span>
       <br>

@@ -1,11 +1,14 @@
 from django.db import models
 from django_jalali.db import models as jmodels
 from extensions.utils import jalali_converter
+from apps.useraccount.models import Profile , Company
 
 # Create your models here.
 class IranProvinces(models.Model):
     ProvinceName = models.CharField(max_length=200, null=True, verbose_name="نام منطقه")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "منطقه"
@@ -23,6 +26,8 @@ class Cities(models.Model):
     CityName = models.CharField(max_length=200, null=True, verbose_name="نام شهر")
     ProvinceID = models.ForeignKey(IranProvinces, on_delete=models.CASCADE, verbose_name="منطقه")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "شهر"
@@ -38,6 +43,8 @@ class Cities(models.Model):
 class BoardTypes(models.Model):
     BoardType = models.CharField(max_length=200, null=True, verbose_name="نوع تابلو")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "نوع تابلو"
@@ -50,15 +57,36 @@ class BoardTypes(models.Model):
         return jalali_converter(self.EntryDate)
     jEntryDate.short_description = "تاریخ ثبت رکورد"
 
+class LocationTypes(models.Model):
+    LocationTypeName = models.CharField(max_length=200, null=True, verbose_name="نوع جایگاه")
+    EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
+
+    class Meta:
+        verbose_name = "نوع جایگاه"
+        verbose_name_plural = "انواع جایگاه"
+
+    def __str__(self):
+        return self.LocationTypeName
+
+    def jEntryDate(self):
+        return jalali_converter(self.EntryDate)
+    jEntryDate.short_description = "تاریخ ثبت رکورد"
+
+
+
 class Locations(models.Model):
     LocationName = models.CharField(max_length=200, null=True, verbose_name="نام جایگاه")
     LocationCode = models.CharField(max_length=200, null=True, verbose_name="کد جایگاه")
-    LocationTypeID = models.CharField(max_length=200, null=True, verbose_name="کد نوع جایگاه")
+    LocationTypeID = models.ForeignKey(LocationTypes, on_delete=models.CASCADE, verbose_name="نوع جایگاه")
     Longitude = models.FloatField(null=True, verbose_name="طول جغرافیایی")
     Latitude = models.FloatField(null=True, verbose_name="عرض جغرافیایی")
     CityID = models.ForeignKey(Cities, on_delete=models.CASCADE, verbose_name="شهر")
     ActivityStatus = models.BooleanField(max_length=5, null=True, verbose_name="فعال/غیرفعال")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "جایگاه"
@@ -77,11 +105,13 @@ class Boards(models.Model):
     LocationID = models.ForeignKey(Locations, on_delete=models.CASCADE, verbose_name="جایگاه")
     BoardScore = models.CharField(max_length=20, null=True, verbose_name="امتیاز تابلو")
     BoardDescription = models.CharField(max_length=200, null=True, verbose_name="توضیحات تابلو")
-    Dimenstions = models.CharField(max_length=20, null=True, verbose_name="ابعاد")
+    Dimenstions = models.CharField(max_length=200, null=True, verbose_name="ابعاد")
     PlacementComments = models.CharField(max_length=200, null=True, verbose_name="نظرات")
     Area = models.CharField(max_length=20, null=True, verbose_name="ناحیه")
     ActivityStatus = models.BooleanField(max_length=5, null=True, verbose_name="فعال/غیرفعال")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "تابلو"
@@ -97,6 +127,8 @@ class Boards(models.Model):
 class Customers(models.Model):
     CustomerName = models.CharField(max_length=200, null=True, verbose_name="نام مشتری")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "مشتری"
@@ -109,12 +141,34 @@ class Customers(models.Model):
         return jalali_converter(self.EntryDate)
     jEntryDate.short_description = "تاریخ ثبت رکورد"
 
+class AgentPaymentMethods(models.Model):
+    AgentPaymentMethodName = models.CharField(max_length=200, null=True, verbose_name="نام روش پرداخت")
+    EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
+
+    class Meta:
+        verbose_name = "روش پرداخت به مسئول"
+        verbose_name_plural = "روش‌های پرداخت به مسئولان"
+
+    def __str__(self):
+        return self.AgentPaymentMethodName
+
+    def jEntryDate(self):
+        return jalali_converter(self.EntryDate)
+    jEntryDate.short_description = "تاریخ ثبت رکورد"
+
 class Agents(models.Model):
     AgentFirstName = models.CharField(max_length=200, null=True, verbose_name="نام مسئول فروش")
     AgentLastName = models.CharField(max_length=200, null=True, verbose_name="نام خانوادگی مسئول فروش")
+    AgentPhone = models.CharField(max_length=200, null=True, verbose_name="شماره تلفن مسئول")
+    AgentMail = models.CharField(max_length=200, null=True, verbose_name="ایمیل مسئول")
     PositionID = models.IntegerField(null=True, verbose_name="آیدی سطح")
     AgentCode = models.IntegerField(null=True, verbose_name="کد مسئول")
+    AgentPaymentMethodID = models.ForeignKey(AgentPaymentMethods, on_delete=models.CASCADE, verbose_name="روش پرداخت به مسئول")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "مسئول"
@@ -132,6 +186,8 @@ class SalesPackages(models.Model):
     AgentNameID = models.ForeignKey(Agents, on_delete=models.CASCADE, verbose_name="مسئول فروش")
     ActivityStatus = models.BooleanField(max_length=5, null=True, verbose_name="فعال/غیرفعال")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "پکیج فروش"
@@ -153,6 +209,8 @@ class PackageDetailsPerBoard(models.Model):
     ActivationDate = models.DateField(max_length=200, null=True, verbose_name="تاریخ میلادی فعال شدن")
     ActivationDateJalali = jmodels.jDateField(max_length=200, null=True, verbose_name="تاریخ شمسی فعال شدن")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "تابلو در پکیج"
@@ -179,6 +237,8 @@ class Contracts(models.Model):
     AgentNameID = models.ForeignKey(Agents, on_delete=models.CASCADE,null=True,blank=True, verbose_name="مسئول فروش")
     CancelingDate = models.DateField(max_length=200, null=True, blank=True,verbose_name="تاریخ میلادی فسخ")
     CancelingDateJalali = jmodels.jDateField(max_length=200, null=True,blank=True, verbose_name="تاریخ شمسی فسخ")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "قرارداد"
@@ -205,6 +265,8 @@ class ContractDetailsPerBoard(models.Model):
     AgentNameID = models.ForeignKey(Agents, on_delete=models.CASCADE,blank=True, null=True,verbose_name="مسئول فروش")
     ContractYearBase = models.CharField(max_length=200, null=True,blank=True, verbose_name="سال پایه قرارداد")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True,blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "تابلو در قرارداد"
@@ -228,6 +290,8 @@ class ContractDetailsPerBoard(models.Model):
 class CustomerPaymentMethod(models.Model):
     CustomerPaymentMethodName = models.CharField(max_length=200, null=True, verbose_name="نام روش پرداخت")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "روش پرداخت"
@@ -250,6 +314,8 @@ class Installment(models.Model):
     PaymentDate = models.DateField(max_length=200, null=True,blank=True, verbose_name="تاریخ میلادی پرداخت")
     PaymentDateJalali = jmodels.jDateField(max_length=200, null=True,blank=True, verbose_name="تاریخ شمسی پرداخت")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "قسط"
@@ -261,3 +327,6 @@ class Installment(models.Model):
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
     jEntryDate.short_description = "تاریخ ثبت رکورد"
+
+    def get_installment(self):
+        return self.Installment.all()

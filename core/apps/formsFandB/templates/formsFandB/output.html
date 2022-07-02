@@ -10,7 +10,7 @@
 <link href="{% static 'css/kamadatepicker.min.css'%}" rel="stylesheet" />
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
-  <div class="col-md-8 col-sm-8 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
 
 
@@ -20,11 +20,13 @@
 
       <br><br>
       <div class="row">
+        {{ form.ProcurementID.label }}
         {{ form.ProcurementID }}
       </div>
       <br><br>
 
       <div class="row">
+        {{ form.TransferedQuantity.label }}<br>
         {{ form.TransferedQuantity }}
         <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="x" name="unit" value="x" checked="checked">
         <label class="unitcheck" for="x">واحد x</label>
@@ -36,14 +38,17 @@
       </div>
       <br><br>
       <div class="row">
+        {{ form.TransferedDateJalali.label }}
         {{ form.TransferedDateJalali }}
       </div>
       <br><br>
       <div class="row">
-        {{ form.TransfereeAgent }}
+        {{ form.DeliveryAgent.label }}
+        {{ form.DeliveryAgent }}
       </div>
       <br><br>
       <div class="row">
+        {{ form.FromInventoryID.label }}
         {{ form.FromInventoryID }}
       </div>
       <br><br>
@@ -62,11 +67,19 @@
       forceFarsiDigits: true
     });
   </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.searchable').select2();
+    });
+  </script>
 </div>
 
 <!-- /page content -->
 {% endblock %}
 {% block scriptsFiles %}
+<script src="{% static 'js/select2.min.js' %}"></script>
+
 {% endblock%}
 {% block scripts %}
+
 {% endblock %}

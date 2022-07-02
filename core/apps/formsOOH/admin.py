@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contracts,Agents,Customers,Cities,IranProvinces, BoardTypes,Locations,Boards,ContractDetailsPerBoard,PackageDetailsPerBoard,SalesPackages,CustomerPaymentMethod,Installment
+from .models import Contracts,Agents,Customers,Cities,IranProvinces, BoardTypes,LocationTypes,Locations,Boards,ContractDetailsPerBoard,PackageDetailsPerBoard,SalesPackages,CustomerPaymentMethod,Installment,AgentPaymentMethods
 # Register your models here.
 class IranProvincesAdmin(admin.ModelAdmin):
     list_display = ('ProvinceName','jEntryDate')
@@ -10,6 +10,11 @@ class BoardTypesAdmin(admin.ModelAdmin):
     list_display = ('BoardType','jEntryDate')
     search_fields = ('BoardType','jEntryDate')
 admin.site.register(BoardTypes, BoardTypesAdmin)
+
+class LocationTypesAdmin(admin.ModelAdmin):
+    list_display = ('LocationTypeName','jEntryDate')
+    search_fields = ('LocationTypeName','jEntryDate')
+admin.site.register(LocationTypes, LocationTypesAdmin)
 
 class LocationsAdmin(admin.ModelAdmin):
     list_display = ('LocationName','LocationCode','LocationTypeID','Longitude','Latitude','CityID','ActivityStatus','jEntryDate')
@@ -35,6 +40,11 @@ class AgentsAdmin(admin.ModelAdmin):
     list_display = ('AgentFirstName','AgentLastName','PositionID','AgentCode','jEntryDate')
     search_fields = ('AgentFirstName','AgentLastName','PositionID','AgentCode','jEntryDate')
 admin.site.register(Agents, AgentsAdmin)
+
+class AgentPaymentMethodsAdmin(admin.ModelAdmin):
+    list_display = ('AgentPaymentMethodName','jEntryDate')
+    search_fields = ('AgentPaymentMethodName','jEntryDate')
+admin.site.register(AgentPaymentMethods, AgentPaymentMethodsAdmin)
 
 class ContractsAdmin(admin.ModelAdmin):
     list_display = ('ContractNumber','CustomerID','PrePayment','ContractPrice','ContractConfirmDate','ContractConfirmDateJalali','IsCancelled','IsExpanded','ValueAddedTax','jEntryDate','AgentNameID','CancelingDate','CancelingDateJalali')

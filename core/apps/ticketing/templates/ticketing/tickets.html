@@ -4,7 +4,7 @@
 
 <link href="{% static 'css/tickets.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
-  <div class="col-md-8 col-sm-8 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
     <h3>تیکت‌ها</h3>
     <br>
@@ -12,7 +12,7 @@
       <thead>
         <tr>
           <th>تیکت</th>
-          <th>خلاصه</th>
+          <th>عنوان</th>
           <th>وضعیت</th>
           <th>بخش</th>
           <th>ایجاد شده در</th>
@@ -23,11 +23,11 @@
         {% for ticket in tickets %}
         <tr>
           <td><a href="/ticket/{{ticket.id}}">{{ticket.id}}</td>
-          <td>{{ticket.title}}</td>
-          <td>{{ticket.status}}</td>
-          <td>{{ticket.assignee}}</td>
-          <td>{{ticket.created_at}}</td>
-          <td>{{ticket.updated_at}}</td>
+          <td><a href="/ticket/{{ticket.id}}">{{ticket.title}}</td>
+          <td><a href="/ticket/{{ticket.id}}">{{ticket.status}}</td>
+          <td><a href="/ticket/{{ticket.id}}">{{ticket.assignee}}</td>
+          <td><a href="/ticket/{{ticket.id}}">{{ticket.jEntryDate}}</td>
+          <td><a href="/ticket/{{ticket.id}}">{{ticket.jUpdateDate}}</td>
         </tr>
         {% endfor %}
       </tbody>

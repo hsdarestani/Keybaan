@@ -8,5 +8,4 @@ urlpatterns = [
 
     path('contract', contract, name='contract'),
     path('econtract', econtract, name='econtract'),
-
 ]

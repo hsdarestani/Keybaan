@@ -1,11 +1,14 @@
 from django.db import models
 from django_jalali.db import models as jmodels
 from extensions.utils import jalali_converter
+from apps.useraccount.models import Profile , Company
 
 # Create your models here.
 class ProductTypes(models.Model):
     ProductTypeTitle = models.CharField(max_length=200, null=True, verbose_name="نوع کالا")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "نوع کالا"
@@ -21,6 +24,8 @@ class ProductTypes(models.Model):
 class PackageTypes(models.Model):
     PackageTypeTitle = models.CharField(max_length=200, null=True, verbose_name="نوع بسته‌بندی")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "نوع بسته‌بندی"
@@ -36,6 +41,8 @@ class PackageTypes(models.Model):
 class MeasuringUnits(models.Model):
     MeasuringUnitTitle = models.CharField(max_length=200, null=True, verbose_name="واحد اندازه‌گیری")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "واحد اندازه‌گیری"
@@ -51,6 +58,8 @@ class MeasuringUnits(models.Model):
 class CommodityCategories(models.Model):
     CommodityCategory = models.CharField(max_length=200, null=True, verbose_name="دسته‌بندی اصلی اقلام")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "دسته‌بندی اصلی اقلام"
@@ -67,6 +76,8 @@ class CommoditySubCategories(models.Model):
     CommoditySubCategory = models.CharField(max_length=200, null=True, verbose_name="دسته‌بندی فرعی اقلام")
     CommodityCatID = models.ForeignKey(CommodityCategories, on_delete=models.CASCADE, verbose_name="دسته‌بندی اصلی")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "دسته‌بندی فرعی اقلام"
@@ -82,6 +93,8 @@ class CommoditySubCategories(models.Model):
 class Brands(models.Model):
     BrandName = models.CharField(max_length=200, null=True, verbose_name="نام برند")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "برند"
@@ -97,6 +110,8 @@ class Brands(models.Model):
 class ProviderTypes(models.Model):
     ProviderTypeTitle = models.CharField(max_length=200, null=True, verbose_name="نوع تامین کننده")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "نوع تامین کننده"
@@ -113,6 +128,8 @@ class Providers(models.Model):
     ProviderName = models.CharField(max_length=200, null=True, verbose_name="نام تامین کننده")
     ProviderTypeID = models.ForeignKey(ProviderTypes, on_delete=models.CASCADE, verbose_name="نوع تامین کننده")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "تامین کننده"
@@ -132,6 +149,8 @@ class Commodities(models.Model):
     CommoditySubCatID = models.ForeignKey(CommoditySubCategories, on_delete=models.CASCADE, verbose_name="دسته‌بندی فرعی قلم کالا")
     BrandID = models.ForeignKey(Brands, on_delete=models.CASCADE, verbose_name="برند")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "قلم کالا"
@@ -148,6 +167,8 @@ class Commodities(models.Model):
 class Roles(models.Model):
     RoleTitle = models.CharField(max_length=200, null=True, verbose_name="نام نقش")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "نقش"
@@ -165,6 +186,8 @@ class FAgents(models.Model):
     AgentLastName = models.CharField(max_length=200, null=True, verbose_name="نام خانوادگی مسئول")
     AgentRoleID = models.ForeignKey(Roles, on_delete=models.CASCADE, verbose_name="نقش")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "مسئول"
@@ -187,6 +210,8 @@ class Procurements(models.Model):
     PackageCount = models.IntegerField(null=True, verbose_name="تعداد")
     PackageUnitValue =  models.FloatField(null=True, verbose_name="مقدار در بسته‌بندی")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "خرید"
@@ -207,6 +232,8 @@ class Recipes(models.Model):
     ProductTypeID =  models.ForeignKey(ProductTypes, on_delete=models.CASCADE, verbose_name="نوع کالا")
     Version = models.CharField(max_length=200, null=True, verbose_name="شماره نسخه")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "دستور پخت"
@@ -226,6 +253,8 @@ class RecipeIngredients(models.Model):
     MeasuringUnitID =  models.ForeignKey(MeasuringUnits, on_delete=models.CASCADE, verbose_name="واحد اندازه‌گیری")
     Quantity = models.FloatField(null=True, verbose_name="مقدار")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "جزئیات دستور پخت"
@@ -242,6 +271,8 @@ class RecipeIngredients(models.Model):
 class Inventories(models.Model):
     InventoryName = models.CharField(max_length=200, null=True, verbose_name="نام انبار")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "انبار"
@@ -260,6 +291,8 @@ class InventoryList(models.Model):
     ProcurementID =  models.ForeignKey(Procurements, on_delete=models.CASCADE, verbose_name="ردیف خرید")
     RemainingPackageCount = models.IntegerField(null=True, verbose_name="تعداد باقی‌مانده")
     UpdateDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ به روز رسانی")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "اقلام انبار"
@@ -281,6 +314,8 @@ class Outputs(models.Model):
     TransferedDateJalali = jmodels.jDateField(max_length=200, null=True, verbose_name="تاریخ شمسی خروج")
     TransferedQuantity = models.FloatField(null=True, verbose_name="مقدار")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "خروجی"
@@ -303,6 +338,8 @@ class Inputs(models.Model):
     TransferedDateJalali = jmodels.jDateField(max_length=200, null=True, blank=True, verbose_name="تاریخ شمسی خروج")
     TransferedQuantity = models.FloatField(null=True, blank=True, verbose_name="مقدار")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "ورودی"
@@ -323,6 +360,8 @@ class Sales(models.Model):
     Quantity = models.FloatField(null=True, verbose_name="مقدار")
     RecipeID =  models.ForeignKey(Recipes, on_delete=models.CASCADE, verbose_name="دستور پخت")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "فروش"
@@ -341,6 +380,8 @@ class Orders(models.Model):
     ItemType = models.CharField(max_length=200, null=True, verbose_name="نوع آیتم")
     Hour = models.CharField(max_length=200, null=True, verbose_name="ساعت")
     OrderDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
 
     class Meta:
         verbose_name = "سفارشات"

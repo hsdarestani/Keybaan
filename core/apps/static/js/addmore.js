@@ -12,6 +12,7 @@ $(document).ready(function() {
 	const EmptyFormi = document.getElementById('insli').cloneNode('True');
 	Counttargeti = EmptyFormi.querySelector('#ititle');
 	$(Counttargeti).append(' ' + y); //add input box
+	var checkboxdata      = $(".checkboxdata"); //Add button ID
 
 
 	var x = 1; //initlal text box count
@@ -19,16 +20,18 @@ $(document).ready(function() {
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-
 			const EmptyForm = document.getElementById('boardli').cloneNode('True');
 			EmptyForm.setAttribute('class','boardli');
 			EmptyForm.setAttribute('id','boardli'+ x);
 			$(TargetForm).append(EmptyForm); //add input box
 			const JDatepicker = EmptyForm.querySelector('.JalaliStart');
 			JDatepicker.setAttribute('id','JalaliStart'+ x);
+			JDatepicker.setAttribute('name','JalaliStart'+ x);
 			const JDatepickerSep = EmptyForm.querySelector('.JalaliFinish');
 			JDatepickerSep.setAttribute('id','JalaliFinish'+ x);
-
+			JDatepickerSep.setAttribute('name','JalaliFinish'+ x);
+			const Pricelid = EmptyForm.querySelector('#id_BoardContractPrice');
+			Pricelid.setAttribute('name','BoardContractPrice'+ x);
 			$(EmptyForm).append('<button href="#" class="remove_field">حذف</button><script type="text/javascript">kamaDatepicker("JalaliStart'+ x +'" , {buttonsColor: "red",forceFarsiDigits: true}); kamaDatepicker("JalaliFinish'+ x +'", {buttonsColor: "red",forceFarsiDigits: true});</script>'); //add input box
 			Counttarget = EmptyForm.querySelector('#btitle');
 			$(Counttarget).append(' ' + x ); //add input box
@@ -59,4 +62,7 @@ $(document).ready(function() {
 	$(TargetFormi).on("click",".remove_field", function(e){ //user click on remove text
 		e.preventDefault(); $(this).parent('li').remove(); y--;
 	})
+
+
+
 });

@@ -6,27 +6,63 @@ from django.template import loader
 from django.urls import reverse
 from .forms import *
 from django.contrib import messages
+from .decorators import *
+from apps.formsOOH.models import Customers,Boards,Agents,ContractDetailsPerBoard, Installment
+from django.forms import modelformset_factory
 
+@login_required
+@OOH_user
 def contract(request):
     form1 = ContractsForm()
+    # form3 = modelformset_factory(Installment,form=InstallmentForm)
+    # qs = objb.Installment_set.all()
+    # formset3 = form3(request.POST)
     form2 = ContractDetailsPerBoardForm()
     form3 = InstallmentForm()
+    form3set = modelformset_factory(Installment, form=InstallmentForm)
+    # qs = Installment.objects.filter(EntryAgent = request.user.profile) # []
+    formset = form3set(request.POST or None )
     form4 = CustomersForm()
-
+    form1.fields["CustomerID"].queryset = Customers.objects.filter(Company_id=request.user.profile.company_id)
+    form2.fields["BoardID"].queryset = Boards.objects.filter(Company_id=request.user.profile.company_id)
+    form2.fields["AgentNameID"].queryset = Agents.objects.filter(Company_id=request.user.profile.company_id)
 
     if 'AddCustomer' in request.POST:
+        user = request.user.profile
+        company = request.user.profile.company_id
         form4 = CustomersForm(request.POST)
+        print(request.user.profile.company_id)
         if (form4.is_valid()):
-            form4.save()
+            obj = form4.save(commit=False)
+            obj.EntryAgent = user
+            obj.Company_id = company
+            obj.save()
             return redirect('formsOOH:contract')
     if 'ContractNumber' in request.POST:
+        user = request.user.profile
+        company = request.user.profile.company_id
         form1 = ContractsForm(request.POST)
         form2 = ContractDetailsPerBoardForm(request.POST)
         form3 = InstallmentForm(request.POST)
-        if all([form1.is_valid(),form2.is_valid(),form3.is_valid()]):
-            form1.save()
-            form2.save()
-            form3.save()
+        if all([form1.is_valid(),form2.is_valid(),formset.is_valid()]):
+            obj = form1.save(commit=False)
+            obj.EntryAgent = user
+            obj.Company_id = company
+            obj.save()
+            # for formx2 in formset2:
+            obj2 = form2.save(commit=False)
+            obj2.EntryAgent = user
+            obj2.Company_id = company
+            obj2.save()
+            for form in formset:
+                obj3 = formset.save(commit=False)
+                # for ins in formset3:
+                #     ins.EntryAgent = user
+                #     ins.Company_id = company
+                #     ins.save()
+                obj3.EntryAgent = user
+                obj3.Company_id = company
+                obj3.save()
             return redirect('formsOOH:contract')
         else:
              print(form1.errors.as_data())
@@ -52,10 +88,13 @@ def contract(request):
         'form1':form1,
         'form2':form2,
         'form3':form3,
+        'formset':formset,
         'form4':form4,
     }
     return render(request, 'apps/formsOOH/templates/formsOOH/contract.html', context)
 
+@login_required
+@OOH_user
 def econtract(request):
 
     form = eContractsForm()

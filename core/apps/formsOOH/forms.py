@@ -30,7 +30,7 @@ class ContractsForm(ModelForm):
             visible.field.widget.attrs['class'] = 'kbforms'
 
         self.fields['ContractConfirmDateJalali'].widget.attrs['readonly'] = 'readonly'
-        self.fields['CustomerID'].widget.attrs['class'] = 'searchable kbforms'
+        self.fields['CustomerID'].widget.attrs['class'] = 'searchable CsSelc'
         self.fields['IsExpanded'].widget.attrs['class'] = ''
         self.fields['ValueAddedTax'].widget.attrs['class'] = ''
         self.fields['ContractConfirmDateJalali'].widget.attrs['id'] = 'ContractConfirmDateJalali'

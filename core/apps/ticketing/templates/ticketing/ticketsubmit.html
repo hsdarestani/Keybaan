@@ -3,15 +3,27 @@
 {% block content %}
 <link href="{% static 'css/forms.css'%}" rel="stylesheet" />
 <div class="right_col" role="main">
-  <div class="col-md-8 col-sm-8 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
 
     <h3>ثبت تیکت جدید</h3>
     <br>
-    <form class="boxed">
-      {{ form.as_table }}
+    <form method="post" id="TicketSubmit" class="boxed">
+      {{ form.title.label }}
+      {{ form.title }}
+      {{ form.assignee.label }}
+      <select name="assignee" class="kbforms" id="id_assignee">
+        <!-- <option value="kbnadmin" selected="">پشتیبانی کی‌بان</option> -->
+        {% for user in users %}
+        <option value={{user.id}}>{{user.get_full_name}}</option>
+        {% endfor %}
+      </select>
+
+
+      {{ form.description.label }}
+      {{ form.description }}
       {% csrf_token %}
       <br><br>
-      <input class="col-md-8 col-sm-8 col-xs-12" type="submit" value="ثبت">
+      <input class="col-md-8 col-sm-8 col-xs-12" form="TicketSubmit" type="submit" value="ثبت">
     </form>
   </div>
 </div>

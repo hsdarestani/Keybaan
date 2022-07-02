@@ -5,7 +5,6 @@ from .views import *
 
 app_name = "formsFandB"
 urlpatterns = [
-
     path('input', input, name='input'),
     path('output', output, name='output'),
 ]

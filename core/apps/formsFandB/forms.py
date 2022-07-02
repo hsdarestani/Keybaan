@@ -19,7 +19,9 @@ class InputsForm(ModelForm):
             visible.field.widget.attrs['class'] = 'kbforms'
 
         self.fields['TransferedDateJalali'].widget.attrs['readonly'] = 'readonly'
+        self.fields['TransferedQuantity'].widget.attrs['class'] = 'w40'
         self.fields['ProcurementID'].widget.attrs['class'] = 'searchable kbforms'
+        self.fields['ToInventoryID'].widget.attrs['class'] = 'searchable kbforms'
         self.fields['TransferedDateJalali'].widget.attrs['id'] = 'TransferedDateJalali'
 
 
@@ -39,4 +41,7 @@ class OutputsForm(ModelForm):
 
         self.fields['TransferedDateJalali'].widget.attrs['readonly'] = 'readonly'
         self.fields['ProcurementID'].widget.attrs['class'] = 'searchable kbforms'
+        self.fields['TransferedQuantity'].widget.attrs['class'] = 'w40'
+        self.fields['DeliveryAgent'].widget.attrs['class'] = 'searchable kbforms'
+        self.fields['FromInventoryID'].widget.attrs['class'] = 'searchable kbforms'
         self.fields['TransferedDateJalali'].widget.attrs['id'] = 'TransferedDateJalali'
