@@ -125,7 +125,7 @@ class Boards(models.Model):
     jEntryDate.short_description = "تاریخ ثبت رکورد"
 
 class Customers(models.Model):
-    CustomerName = models.CharField(max_length=200, null=True, verbose_name="نام مشتری")
+    CustomerName = models.CharField(max_length=200,unique=True, null=True, verbose_name="نام مشتری")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
     Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
     EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")

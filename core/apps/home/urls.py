@@ -15,5 +15,4 @@ urlpatterns = [
     path('FandB', FandB, name='FandB'),
     path('construction/', construction, name='construction'),
     path('advertisement/', advertisement, name='advertisement'),
-    path('', contactform, name='index'),
 ]

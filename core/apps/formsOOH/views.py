@@ -9,6 +9,8 @@ from django.contrib import messages
 from .decorators import *
 from apps.formsOOH.models import Customers,Boards,Agents,ContractDetailsPerBoard, Installment,Contracts
 from django.forms import formset_factory
+from extensions import jalali
+
 
 @login_required
 @OOH_user
@@ -25,9 +27,12 @@ def contract(request):
     formset2 = form2set(request.POST or None,prefix='formset2')
     formset = form3set(request.POST or None,prefix='formset3')
     form4 = CustomersForm()
+    print(type(form4))
     form1.fields["CustomerID"].queryset = Customers.objects.filter(Company_id=request.user.profile.company_id)
-    form2.fields["BoardID"].queryset = Boards.objects.filter(Company_id=request.user.profile.company_id)
-    form2.fields["AgentNameID"].queryset = Agents.objects.filter(Company_id=request.user.profile.company_id)
+    print(type(formset2))
+    # print(formset2.fields)
+    form1.fields["AgentNameID"].queryset = Agents.objects.filter(Company_id=request.user.profile.company_id)
+    mamadBoards = Boards.objects.filter(Company_id=request.user.profile.company_id)
 
     if 'AddCustomer' in request.POST:
         user = request.user.profile
@@ -36,9 +41,17 @@ def contract(request):
         print(request.user.profile.company_id)
         if (form4.is_valid()):
             obj = form4.save(commit=False)
-            obj.EntryAgent = user
-            obj.Company_id = company
-            obj.save()
+            try:
+                get_object_or_404(Customers,CustomerName = obj.CustomerName)
+                cuscheck = 1
+            except:
+                cuscheck = 0
+            if (cuscheck):
+                messages.info(request, "این نام مشتری قبلا ثبت شده است")
+            else:
+                obj.EntryAgent = user
+                obj.Company_id = company
+                obj.save()
             return redirect('formsOOH:contract')
     if 'ContractNumber' in request.POST:
         user = request.user.profile
@@ -48,60 +61,65 @@ def contract(request):
         form3 = InstallmentForm(request.POST)
         if all([form1.is_valid(),formset2.is_valid(),formset.is_valid()]):
             obj = form1.save(commit=False)
-            obj.EntryAgent = user
-            obj.Company_id = company
-            obj.save()
-            conb = Contracts.objects.get(ContractNumber = obj.ContractNumber) # []
-            # for formx2 in formset2:
-            # obj2 = form2.save(commit=False)
-            # obj2.EntryAgent = user
-            # obj2.Company_id = company
-            # obj2.save()
-            print (conb)
-            for form2 in formset2:
-                obj2 = form2.save(commit=False)
-                # for ins in formset3:
-                #     ins.EntryAgent = user
-                #     ins.Company_id = company
-                #     ins.save()
-                obj2.ContractID = conb
-                obj2.EntryAgent = user
-                obj2.Company_id = company
-                obj2.save()
-            for form in formset:
-                obj3 = form.save(commit=False)
-                # for ins in formset3:
-                #     ins.EntryAgent = user
-                #     ins.Company_id = company
-                #     ins.save()
-                obj3.ContractID = conb
-                obj3.EntryAgent = user
-                obj3.Company_id = company
-                obj3.save()
-            return redirect('formsOOH:contract')
-        else:
-             print(form1.errors.as_data())
-             print(form2.errors.as_data())
-             print(form3.errors.as_data())
-             messages.info(request, "نام‌کاربری یا رمز عبور اشتباه است!")
-    # print(len(request.POST), "asdas")
-    # if(len(request.POST) == 0):
-    #     form4 = CustomersForm(request.POST)
-    #     print("asdas")
-    #     # form4.save()
-    #     if (form4.is_valid()):
-    #         form4.save()
-    #
-    # if all([form1.is_valid(),form2.is_valid(),form3.is_valid()]):
-    #     form1.save()
-    #     obj = form2.save()
-    #     obj.DailyPrice = (obj.ContractPrice*(obj.ContractFinish-obj.ContractStart+1))
-    #     obj.save()
-    #     form3.save()
-    #     messages.success(request,'پیام شما با موفقیت ارسال گردید.')
+            obj.ContractConfirmDate = jalali.Persian(str(obj.ContractConfirmDateJalali)).gregorian_string()
+            try:
+                get_object_or_404(Contracts,ContractNumber = obj.ContractNumber)
+                conNcheck = 1
+            except:
+                conNcheck = 0
+            if (conNcheck):
+                 messages.info(request, "این شماره قرارداد قبلا ثبت شده است")
+            elif (int(obj.PrePayment) > int(obj.ContractPrice)):
+                 messages.info(request, "مبلغ پیش پرداخت، بیشتر از مبلغ کل قرارداد وارد شده است")
+            else:
+                obj.EntryAgent = user
+                obj.Company_id = company
+                obj.save()
+                conb = Contracts.objects.get(ContractNumber = obj.ContractNumber)
+                for form2 in formset2:
+                    obj2 = form2.save(commit=False)
+                    obj2.AgentNameID = obj.AgentNameID
+                    obj2.ContractStart = jalali.Persian('1401-02-10').gregorian_string()
+                    obj2.ContractFinish = jalali.Persian(str(obj2.JalaliFinish)).gregorian_string()
+                    try:
+                        SameBoards = ContractDetailsPerBoard.objects.all(BoardID = obj2.BoardID)
+                        for board in SameBoards:
+                            if ((board.ContractStart > obj2.ContractStart and board.ContractFinish < obj2.ContractFinish) or (board.ContractStart < obj2.ContractStart and  board.ContractFinish > obj2.ContractFinish) or (board.ContractFinish > obj2.ContractStart and  board.ContractFinish < obj2.ContractFinish) or (board.ContractStart > obj2.ContractStart and  board.ContractStart < obj2.ContractFinish)):
+                                SameBoardscheck = 1
+                            else:
+                                SameBoardscheck = 0
+                    except:
+                        SameBoardscheck = 0
+                    if (SameBoardscheck):
+                        messages.info(request, "این تابلو در بازه ثبت شده در قرارداد دیگری در اکران است!")
+                    elif (obj2.ContractStart > obj2.ContractFinish):
+                        messages.info(request, "تاریخ شروع اکران نباید زودتر از تاریخ پایان اکران باشد")
+                    else:
+                        obj2.ContractID = conb
+                        obj2.EntryAgent = user
+                        obj2.Company_id = company
+                        obj2.save()
+                    insnum = 1
+                    inssum = 0
+                for form in formset:
+                     obj3 = form.save(commit=False)
+                     try:
+                         SameIns = Installments.objects.all(ContractID = obj3.ContractID)
+                         for ins in SameIns:
+                             inssum += ins.Installment
+                     except:
+                         SameBoardscheck = 0
+                     obj3.ContractID = conb
+                     obj3.EntryAgent = user
+                     obj3.Company_id = company
+                     obj3.save()
+                     insnum += 1
+                if (inssum != obj.ContractPrice):
+                    messages.info(request, "مجموع اقساط با مبلغ کل قرارداد برابر نشده است")
+                return redirect('formsOOH:contract')
     context={
         'form1':form1,
-        'form2':form2,
+        'mamadBoards':mamadBoards,
         'formset2' : formset2,
         'form3':form3,
         'formset':formset,

@@ -28,22 +28,7 @@ def faq(request):
     return HttpResponse(html_template.render(context, request))
 
 
-def contactform(request):
-    form = ContactUsForm()
-    # form.fields['ip_address'].initial = ip_address
-    if request.POST:
-        form = ContactUsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'پیام شما با موفقیت ارسال گردید.')
-            # obj.ip_address = ip_address
-            # obj.save()
-            # return redirect('/')
 
-    context ={
-        "form" : form,
-        }
-    return render(request, 'apps/home/templates/home/index.html', context)
 
 def contact(request):
     context = {'segment': 'contact'}

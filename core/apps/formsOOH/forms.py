@@ -17,7 +17,7 @@ class CustomersForm(ModelForm):
 class ContractsForm(ModelForm):
     class Meta:
         model = Contracts
-        fields = ('ContractNumber', 'CustomerID','PrePayment','ContractPrice','ContractConfirmDateJalali','IsExpanded','ValueAddedTax',)
+        fields = ('ContractNumber','AgentNameID' ,'CustomerID','PrePayment','ContractPrice','ContractConfirmDateJalali','IsExpanded','ValueAddedTax',)
     def __init__(self, *args, **kwargs):
         super(ContractsForm, self).__init__(*args, **kwargs)
         self.fields['ContractNumber'].widget.attrs['placeholder'] = 'شماره قرارداد'

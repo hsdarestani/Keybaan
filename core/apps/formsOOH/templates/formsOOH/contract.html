@@ -220,8 +220,17 @@
                         width: 100% !important;
                       }
                     </style>
-                    {{ formset2.empty_form.BoardID.label }}
-                    {{ formset2.empty_form.BoardID }}
+                    <select name="formset2-__prefix__-BoardID" placeholder="کد تابلو" class="kbforms" id="id_formset2-__prefix__-BoardID">
+                      <option value="" selected="">---------</option>
+
+                      {% for m in mamadBoards%}
+                      <option value="{{m.id}}">{{m.id}}</option>
+                      {% endfor %}
+
+                    </select>
+
+
+
                   </span>
                   <br>
                   <span class="row">

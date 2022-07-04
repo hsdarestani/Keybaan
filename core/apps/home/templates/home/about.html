@@ -1,43 +1,46 @@
 {% include "apps/templates/base/headerwhite.html" %}
-
+{% load  resaneh_tags %}
 {% load static %}
 
 <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
 <style>
-/* Style the tab */
-.tab, .tab2 {
-  overflow: hidden;
-}
+  /* Style the tab */
+  .tab,
+  .tab2 {
+    overflow: hidden;
+  }
 
-/* Style the buttons inside the tab */
-.tab button {
-  text-align:center;
-  background-color: transparent !important;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-.tab2 button {
-  text-align:center;
-  background-color: transparent !important;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
+  /* Style the buttons inside the tab */
+  .tab button {
+    text-align: center;
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  .tab2 button {
+    text-align: center;
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
 
 
-/* Style the tab content */
-.tabcontent, .tabcontent2 {
-  display: none;
-  padding: 6px 12px;
-  border-top: none;
-}
+  /* Style the tab content */
+  .tabcontent,
+  .tabcontent2 {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
 </style>
 <style media="screen">
   .fa-linkedin-square {
@@ -115,25 +118,32 @@
                           <div class="wpb_wrapper">
 
 
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Vision')">چشم انداز</button>
-  <button class="tablinks" onclick="openCity(event, 'Mission')">ماموریت</button>
-  <button class="tablinks" onclick="openCity(event, 'History')">تاریخچه</button>
-</div>
+                            <div class="tab">
+                              <button class="tablinks" onclick="openCity(event, 'Vision')">چشم انداز</button>
+                              <button class="tablinks" onclick="openCity(event, 'Mission')">ماموریت</button>
+                              <button class="tablinks" onclick="openCity(event, 'History')">تاریخچه</button>
+                            </div>
 
-<div id= "Mission" class="tabcontent">
-  <p>کی‌بان قصد دارد با طراحی سرویس‌های جمع‌آوری داده، ارائه شاخص و داشبوردهای اختصاصی، در حوزه‌های مختلف سازمانی (بازاریابی، منابع انسانی، مالی، عملیات و مدیریت کسب و کار) زیرساخت‌های کسب و کار هوشمند را به مرور در صنایع مختلف پیاده‌سازی کند. در حال حاضر، کی‌بان با ورود به صنعت تبلیغات محیطی (Out of Home Advertising) و غذا و نوشیدنی (Food & Beverage) توانسته این کسب و کارها را به داده‌محوری نزدیک کند. این روند با عمیق شدن در این کسب و کارها در سال های آینده ادامه پیدا می‌کند تا بتواند چارچوبی یکپارچه از جمع‌آوری داده تا مصورسازی آن را برای کسب و کارهای این صنایع ارائه دهد.</p>
-</div>
+                            <div id="Mission" class="tabcontent">
+                              <p>کی‌بان قصد دارد با طراحی سرویس‌های جمع‌آوری داده، ارائه شاخص و داشبوردهای اختصاصی، در حوزه‌های مختلف سازمانی (بازاریابی، منابع انسانی، مالی، عملیات و مدیریت کسب و کار) زیرساخت‌های کسب و کار هوشمند را به مرور در صنایع
+                                مختلف پیاده‌سازی کند. در حال حاضر، کی‌بان با ورود به صنعت تبلیغات محیطی (Out of Home Advertising) و غذا و نوشیدنی (Food & Beverage) توانسته این کسب و کارها را به داده‌محوری نزدیک کند. این روند با عمیق شدن در این کسب و
+                                کارها در سال های آینده ادامه پیدا می‌کند تا بتواند چارچوبی یکپارچه از جمع‌آوری داده تا مصورسازی آن را برای کسب و کارهای این صنایع ارائه دهد.</p>
+                            </div>
 
-<div id="Vision" class="tabcontent" style="display:block !important;">
-  <p>انتهای این مسیر کجاست؟ نمی‌دانیم. نباید هم بدانیم. تلاش ما این است خشت‌های اول قصرهای بعدی تمدن را بنا نهیم. تمدن بعدی بشر تمدن داده‌ها است. کی‌بان می‌خواهد یک زیرساخت برای جمع‌اوری داده‌های تمامی صنایع باشد و این شاید چشم‌انداز دور از دستی نباشد. اما ما به جمع‌آوری تمام داده‌ها دقت کنید. تمامی داده‌ها به صورت تماما دیجیتال می‌اندیشیم تا بتوانیم بنیان‌ها یک تمدن دیجیتال واقعی را فراهم کنیم. بدینوسیله تمدن ما همچون عهد باستان در دوران دیجیتال نیز ردپا و امتداد خواهد داشت. این بزرگ‌ترین آرمان کی‌بان است. تلاش ما حذف نشدن تاریخ و درس‌آموخته‌های تمدن مان و تبدیل شدن به بخشی از تمدن دیجیتال جهانی است.</p>
-</div>
+                            <div id="Vision" class="tabcontent" style="display:block !important;">
+                              <p>انتهای این مسیر کجاست؟ نمی‌دانیم. نباید هم بدانیم. تلاش ما این است خشت‌های اول قصرهای بعدی تمدن را بنا نهیم. تمدن بعدی بشر تمدن داده‌ها است. کی‌بان می‌خواهد یک زیرساخت برای جمع‌اوری داده‌های تمامی صنایع باشد و این
+                                شاید چشم‌انداز دور از دستی نباشد. اما ما به جمع‌آوری تمام داده‌ها دقت کنید. تمامی داده‌ها به صورت تماما دیجیتال می‌اندیشیم تا بتوانیم بنیان‌ها یک تمدن دیجیتال واقعی را فراهم کنیم. بدینوسیله تمدن ما همچون عهد باستان در
+                                دوران دیجیتال نیز ردپا و امتداد خواهد داشت. این بزرگ‌ترین آرمان کی‌بان است. تلاش ما حذف نشدن تاریخ و درس‌آموخته‌های تمدن مان و تبدیل شدن به بخشی از تمدن دیجیتال جهانی است.</p>
+                            </div>
 
-<div id="History" class="tabcontent">
-  <p>سرویس کی‌بان، از یک دست‌گرمی دوستانه برای طراحی داشبورد مدیریتی و تعریف شاخص برای مارکتینگ در کسب و کارها شروع شد. هرچند به نظر نمی‌آمد این کار یک نیاز واقعی در بازار باشد، اما بر اساس تجربیات کاری پیشین حس می‌شد که شاید بتوان به کمک داده و اطلاعاتی که از آن ها استخراج می شود، زبان مشترکی بین متخصصین واحد مارکتینگ و مدیران ایجاد کرد. همین دغدغه باعث شد تا هسته اولیه توسعه دهندگان پروژه، به ایده تجاری‌سازی یک نیاز عجیب در بازار برسند؛ ارائه خدمات پایگاه داده، مشاوره تعریف شاخص های عملکرد و داشبورد سازی برای کسب و کارها.
-پس از گذشت چند ماه و انجام تحقیقات در بازار صنایع مختلف، مشخص شد که بسیاری از کسب و کارهای غیر دیجیتال و سنتی، نیاز مبرمی به داده محوری دارند. در نتیجه، ایده راه‌اندازی یک سرویس داده‌محوری و هوش کسب و کار سر و شکل جدی تری به خود گرفت و تیم اولیه سازمان، از شهریور ماه سال ۱۴۰۰ با نام «کی‌بان» شروع به فعالیت کرد.
-</p>
-</div>
+                            <div id="History" class="tabcontent">
+                              <p>سرویس کی‌بان، از یک دست‌گرمی دوستانه برای طراحی داشبورد مدیریتی و تعریف شاخص برای مارکتینگ در کسب و کارها شروع شد. هرچند به نظر نمی‌آمد این کار یک نیاز واقعی در بازار باشد، اما بر اساس تجربیات کاری پیشین حس می‌شد که
+                                شاید بتوان به کمک داده و اطلاعاتی که از آن ها استخراج می شود، زبان مشترکی بین متخصصین واحد مارکتینگ و مدیران ایجاد کرد. همین دغدغه باعث شد تا هسته اولیه توسعه دهندگان پروژه، به ایده تجاری‌سازی یک نیاز عجیب در بازار
+                                برسند؛ ارائه خدمات پایگاه داده، مشاوره تعریف شاخص های عملکرد و داشبورد سازی برای کسب و کارها.
+                                پس از گذشت چند ماه و انجام تحقیقات در بازار صنایع مختلف، مشخص شد که بسیاری از کسب و کارهای غیر دیجیتال و سنتی، نیاز مبرمی به داده محوری دارند. در نتیجه، ایده راه‌اندازی یک سرویس داده‌محوری و هوش کسب و کار سر و شکل جدی
+                                تری به خود گرفت و تیم اولیه سازمان، از شهریور ماه سال ۱۴۰۰ با نام «کی‌بان» شروع به فعالیت کرد.
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -178,158 +188,157 @@
                           <div class="wpb_text_column wpb_content_element">
                             <div class="wpb_wrapper">
 
-<div id="Amirreza" class="tabcontent2" style="display:block !important;">
+                              <div id="Amirreza" class="tabcontent2" style="display:block !important;">
 
-<div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div class="wpb_single_image wpb_content_element vc_align_left">
+                                <div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div class="wpb_single_image wpb_content_element vc_align_left">
 
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                      <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/arezabanikamali.png' %}"></div>
-                                                    </figure>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
-                                                    <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
+                                          <figure class="wpb_wrapper vc_figure">
+                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/arezabanikamali.png' %}"></div>
+                                          </figure>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
+                                          <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
 
-                                                    <div class="liner-continer">
-                                                      <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l"> امیررضا بنی کمالی</h4>
-                                                    </div>
-
-                                                    <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs"> مدیر محصول</div>
-                                                    <br>
-                                                    <a href="https://www.linkedin.com/in/amirreza-banikamali-b2b68379/"><i class="fa fa-linkedin-square"></i></a>
-                                                  </div>
-
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
+                                          <div class="liner-continer">
+                                            <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l"> امیررضا بنی کمالی</h4>
                                           </div>
 
-<div id="MoEr" class="tabcontent2">
+                                          <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs"> مدیر محصول</div>
+                                          <br>
+                                          <a href="https://www.linkedin.com/in/amirreza-banikamali-b2b68379/"><i class="fa fa-linkedin-square"></i></a>
+                                        </div>
 
-<div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div class="wpb_single_image wpb_content_element vc_align_left">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
 
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                      <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/mohaghgoo.png' %}"></div>
-                                                    </figure>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
-                                                    <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
+                              <div id="MoEr" class="tabcontent2">
 
-                                                    <div class="liner-continer">
-                                                      <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l"> محمدعرفان حق‌گو</h4>
-                                                    </div>
+                                <div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div class="wpb_single_image wpb_content_element vc_align_left">
 
-                                                    <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs"> تحلیلگر داده</div>
-                                                    <br>
-                                                    <a href="https://www.linkedin.com/in/moerfanhaghgoo/"><i class="fa fa-linkedin-square"></i></a>
-                                                  </div>
+                                          <figure class="wpb_wrapper vc_figure">
+                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/mohaghgoo.png' %}"></div>
+                                          </figure>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
+                                          <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
 
-                                                </div>
-                                              </div>
-                                            </div>
+                                          <div class="liner-continer">
+                                            <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l"> محمدعرفان حق‌گو</h4>
                                           </div>
 
-</div>
+                                          <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs"> تحلیلگر داده</div>
+                                          <br>
+                                          <a href="https://www.linkedin.com/in/moerfanhaghgoo/"><i class="fa fa-linkedin-square"></i></a>
+                                        </div>
 
-<div id="Hossein" class="tabcontent2">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
-<div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div class="wpb_single_image wpb_content_element vc_align_left">
+                              </div>
 
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                      <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/hsdarestani.png' %}"></div>
-                                                    </figure>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
-                                                    <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
+                              <div id="Hossein" class="tabcontent2">
 
-                                                    <div class="liner-continer">
-                                                      <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l">حسین دارستانی</h4>
-                                                    </div>
+                                <div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div class="wpb_single_image wpb_content_element vc_align_left">
 
-                                                    <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs"> توسعه دهنده</div>
-                                                    <br>
-                                                    <a href="https://www.linkedin.com/in/hsdarestani/"><i class="fa fa-linkedin-square"></i></a>
-                                                  </div>
+                                          <figure class="wpb_wrapper vc_figure">
+                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/hsdarestani.png' %}"></div>
+                                          </figure>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
+                                          <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
 
-                                                </div>
-                                              </div>
-                                            </div>
+                                          <div class="liner-continer">
+                                            <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l">حسین دارستانی</h4>
                                           </div>
 
-</div>
+                                          <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs"> توسعه دهنده</div>
+                                          <br>
+                                          <a href="https://www.linkedin.com/in/hsdarestani/"><i class="fa fa-linkedin-square"></i></a>
+                                        </div>
 
-<div id="Mehrnoosh" class="tabcontent2">
-<div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div class="wpb_single_image wpb_content_element vc_align_left">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
-                                                    <figure class="wpb_wrapper vc_figure">
-                                                      <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/mzamanian.png' %}"></div>
-                                                    </figure>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                              <div class="vc_column-inner">
-                                                <div class="wpb_wrapper">
-                                                  <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
-                                                    <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
+                              </div>
 
-                                                    <div class="liner-continer">
-                                                      <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l">مهرنوش زمانیان</h4>
-                                                    </div>
+                              <div id="Mehrnoosh" class="tabcontent2">
+                                <div class="vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex">
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div class="wpb_single_image wpb_content_element vc_align_left">
 
-                                                    <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs">طراح Ui-Ux</div>
-                                                    <br>
-                                                    <a href="https://www.linkedin.com/in/mehrnoosh-zamanian-8b4a4b219/"><i class="fa fa-linkedin-square"></i></a>
-                                                  </div>
+                                          <figure class="wpb_wrapper vc_figure">
+                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_img-placeholder vc_single_image-img" src="{% static 'images/mzamanian.png' %}"></div>
+                                          </figure>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="wpb_column vc_column_container vc_col-sm-6">
+                                    <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
+                                        <div id="wd-62ada978003a6" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-title-color-default wd-title-style-default wd-width-100 text-right ">
+                                          <div class="title-subtitle  subtitle-color-default font-default subtitle-style-default wd-font-weight- wd-fontsize-xs"> </div>
 
-                                                </div>
-                                              </div>
-                                            </div>
+                                          <div class="liner-continer">
+                                            <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l">مهرنوش زمانیان</h4>
                                           </div>
-</div>
+
+                                          <div class="title-after_title  set-cont-mb-s reset-last-child  wd-fontsize-xs">طراح Ui-Ux</div>
+                                          <br>
+                                          <a href="https://www.linkedin.com/in/mehrnoosh-zamanian-8b4a4b219/"><i class="fa fa-linkedin-square"></i></a>
+                                        </div>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
 
                               <div class="tab2">
-  <button class="tablinks2" onclick="openCity2(event, 'Amirreza')"><img width="75px" height="75px" src="{% static 'images/arezabanikamali.png' %}" alt=""></button>
-  <button class="tablinks2" onclick="openCity2(event, 'MoEr')"> <img width="75px" height="75px" src="{% static 'images/mohaghgoo.png' %}" alt=""></button>
-  <button class="tablinks2" onclick="openCity2(event, 'Hossein')"> <img width="75px" height="75px" src="{% static 'images/hsdarestani.png' %}" alt=""></button>
-  <button class="tablinks2" onclick="openCity2(event, 'Mehrnoosh')"> <img width="75px" height="75px" src="{% static 'images/mzamanian.png' %}" alt=""></button
-
-
+                                <button class="tablinks2" onclick="openCity2(event, 'Amirreza')"><img width="75px" height="75px" src="{% static 'images/arezabanikamali.png' %}" alt=""></button>
+                                <button class="tablinks2" onclick="openCity2(event, 'MoEr')"> <img width="75px" height="75px" src="{% static 'images/mohaghgoo.png' %}" alt=""></button>
+                                <button class="tablinks2" onclick="openCity2(event, 'Hossein')"> <img width="75px" height="75px" src="{% static 'images/hsdarestani.png' %}" alt=""></button>
+                                <button class="tablinks2" onclick="openCity2(event, 'Mehrnoosh')"> <img width="75px" height="75px" src="{% static 'images/mzamanian.png' %}" alt=""></button </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -338,28 +347,25 @@
                   </div>
                 </div>
               </div>
+
             </div>
+
+
+
+
+
+            <div class="vc_row-full-width vc_clearfix"></div>
+
+
+
+
+            {% load  resaneh_tags %}
+
+
+
+
+            <div class="vc_row-full-width vc_clearfix"></div>
           </div>
-
-        </div>
-
-
-
-
-
-        <div class="vc_row-full-width vc_clearfix"></div>
-
-
-
-
-        {% include "apps/home/templates/home/contactform.html" %}
-
-
-
-
-
-        <div class="vc_row-full-width vc_clearfix"></div>
-      </div>
 
 
 
@@ -370,31 +376,32 @@
 <script type="text/javascript" src="{% static 'js/vc-tta-autoplay.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/vc-accordion.min.js' %}"></script>
 <script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+
+  function openCity2(evt2, cityName2) {
+    var i, tabcontent2, tablinks2;
+    tabcontent2 = document.getElementsByClassName("tabcontent2");
+    for (i = 0; i < 4; i++) {
+      tabcontent2[i].style.display = "none";
+    }
+    tablinks2 = document.getElementsByClassName("tablinks2");
+    for (i = 0; i < 4; i++) {
+      tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName2).style.display = "block";
+    evt2.currentTarget.className += " active";
   }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-function openCity2(evt2, cityName2) {
-  var i, tabcontent2, tablinks2;
-  tabcontent2 = document.getElementsByClassName("tabcontent2");
-  for (i = 0; i < 4; i++) {
-    tabcontent2[i].style.display = "none";
-  }
-  tablinks2 = document.getElementsByClassName("tablinks2");
-  for (i = 0; i < 4; i++) {
-    tablinks2[i].className = tablinks2[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName2).style.display = "block";
-  evt2.currentTarget.className += " active";
-}
 </script>
 {% include "apps/templates/base/footer.html" %}
