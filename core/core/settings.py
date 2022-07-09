@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-eo!ybyoh!%zjo9_5ap+(wd-s3yyd&)-d@v3%yx%qk3c71=w9p6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['keybaan.ir','www.keybaan.ir']
 
 
 # Application definition
@@ -95,14 +95,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'postgres',
+     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'keybaanc_db',
+        'USER': 'keybaanc_admin',
         'PASSWORD': '@Code4760',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
+    
 }
 
 # Password validation
@@ -143,7 +145,7 @@ USE_TZ = True
 
 # # درحالت تست فعال
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'media/'
+MEDIA_URL = ''
 
 
 # Static files (CSS, JavaScript, Images)

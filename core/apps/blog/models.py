@@ -55,7 +55,7 @@ class Article(models.Model):
     category = models.ManyToManyField(Category, verbose_name="دسته‌بندی", related_name="articles")
     minidescription = models.CharField(max_length=500, verbose_name="خلاصه")
     description = models.TextField(verbose_name="متن")
-    thumbnail = models.ImageField(upload_to="blogimages", verbose_name="تصویر")
+    thumbnail = models.ImageField(upload_to="media/blogimages", verbose_name="تصویر")
     publish = models.DateTimeField(default=timezone.now, verbose_name="زمان انتشار")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

@@ -31,6 +31,7 @@ class ContractsForm(ModelForm):
 
         self.fields['ContractConfirmDateJalali'].widget.attrs['readonly'] = 'readonly'
         self.fields['CustomerID'].widget.attrs['class'] = 'searchable CsSelc'
+        self.fields['AgentNameID'].widget.attrs['class'] = 'searchable kbforms'
         self.fields['IsExpanded'].widget.attrs['class'] = ''
         self.fields['ValueAddedTax'].widget.attrs['class'] = ''
         self.fields['ContractConfirmDateJalali'].widget.attrs['id'] = 'ContractConfirmDateJalali'
@@ -55,7 +56,7 @@ class eContractsForm(ModelForm):
 class ContractDetailsPerBoardForm(ModelForm):
     class Meta:
         model = ContractDetailsPerBoard
-        fields = ('ContractID','BoardID','BoardContractPrice','JalaliStart','JalaliFinish','AgentNameID',)
+        fields = ('ContractID','BoardID','DailyPrice','BoardContractPrice','JalaliStart','JalaliFinish','AgentNameID',)
 
     def __init__(self, *args, **kwargs):
         super(ContractDetailsPerBoardForm, self).__init__(*args, **kwargs)
@@ -80,7 +81,7 @@ class ContractDetailsPerBoardForm(ModelForm):
 class InstallmentForm(ModelForm):
     class Meta:
         model = Installment
-        fields = ('ContractID','Installment','InstallmentNumber','PaymentDateJalali',)
+        fields = ('ContractID','Installment','InstallmentNumber','PaymentDate','PaymentDateJalali',)
     def __init__(self, *args, **kwargs):
         super(InstallmentForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():

@@ -65,8 +65,8 @@
             {{ form.non_field_errors }}
             <br><br>
             <div class="row">
-              {{ form2.AgentNameID.label }}<br>
-              {{ form2.AgentNameID }}
+              {{ form1.AgentNameID.label }}<br>
+              {{ form1.AgentNameID }}
               <!--      <input class="col-md-8 col-sm-8 col-xs-12 kbforms" list="agentID" name="agentID" placeholder="مسئول فروش">
               <datalist id="agentID">
                 <option value="مسئول 1">
@@ -224,7 +224,7 @@
                       <option value="" selected="">---------</option>
 
                       {% for m in mamadBoards%}
-                      <option value="{{m.id}}">{{m.id}}</option>
+                      <option value="{{m.id}}">{{m.BoardCode}}</option>
                       {% endfor %}
 
                     </select>

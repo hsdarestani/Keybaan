@@ -1,0 +1,61 @@
+<div  data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_column-gap-10 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+  
+  <div class="wpb_column vc_column_container vc_col-sm-12">
+    <div class="vc_column-inner">
+      <div class="wpb_wrapper">
+        <div class="vc_row wpb_row vc_inner vc_row-fluid">
+          <form method="post">
+            {% csrf_token %}
+            <div class="wpb_column vc_column_container vc_col-sm-6">
+              <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                  <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                    <div class="wpb_wrapper">
+                      {{ form2.emailaddress.label }}
+                      {{ form2.emailaddress }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wpb_column vc_column_container vc_col-sm-6">
+              <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                  <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                    <div class="wpb_wrapper">
+                      {{ form2.csname.label }}
+                      {{ form2.csname }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+              <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                  <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                    <div class="wpb_wrapper">
+                      {{ form2.description.label }}
+                      {{ form2.description }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+              <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                  <div class="wpb_raw_code wpb_content_element wpb_raw_html">
+                    <div class="wpb_wrapper">
+                      <button type="submit" value="submit" class="btn-default btn" name="button-1654619463454" access="false" style="default" id="button-1654619463454">درخواست مشاوره</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

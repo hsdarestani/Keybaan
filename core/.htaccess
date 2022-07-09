@@ -1,0 +1,23 @@
+
+RewriteEngine on
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/keybaanc/repositories/Keybaan/core"
+PassengerBaseURI "/"
+PassengerPython "/home/keybaanc/virtualenv/repositories/Keybaan/core/3.8/bin/python"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
+
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/keybaanc/repositories/Keybaan/core"
+PassengerBaseURI "/"
+PassengerPython "/home/keybaanc/virtualenv/repositories/Keybaan/core/3.8/bin/python"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^keybaan\.ir$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.keybaan\.ir$
+RewriteRule ^/?$ "https\:\/\/keybaan\.ir\/" [R=301,L]
+

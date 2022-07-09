@@ -6,7 +6,7 @@ from apps.useraccount.models import Profile
 # just manager can see
 def OOH_user(views_func):
     def wrapper_func(request, *args, **kwargs):
-        if request.user.profile.IndustrySel_id == 2 or request.user.is_superuser:
+        if request.user.profile.IndustrySel_id == 1 or request.user.is_superuser:
             return views_func(request, *args, **kwargs)
         else:
             return redirect('dashboard:panel')

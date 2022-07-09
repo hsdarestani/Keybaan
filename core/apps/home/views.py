@@ -7,9 +7,16 @@ from django.urls import reverse
 from .forms import ContactUsForm
 from .models import ContactUs
 from django.contrib import messages
+from apps.blog.models import Article
+from django.shortcuts import render, get_object_or_404
 
 def index(request):
-    context = {'segment': 'index'}
+    articles = Article.objects.filter(status="p").order_by('-publish')
+
+    context = {
+        'segment': 'index',
+        'articles' : articles
+    }
 
     html_template = loader.get_template('apps/home/templates/home/index.html')
     return HttpResponse(html_template.render(context, request))

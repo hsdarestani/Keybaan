@@ -1,0 +1,342 @@
+.kbforms {
+  width: 100% !important;
+  background-color: #EEEEEE !important;
+  border: 0px !important;
+  border-radius: 20px !important;
+  height: 50px ;
+  padding: 10px !important;
+}
+.kbforms2 {
+  width: 100% !important;
+  background-color: #EEEEEE !important;
+  border: 0px !important;
+  border-radius: 20px !important;
+  padding: 10px !important;
+}
+.boxed .w40 {
+  margin-left: 5px;
+  background-color: #EEEEEE;
+  border: 0px;
+  width: 40%;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+}
+.boxed .w55 {
+  margin-left: 5px;
+  background-color: #EEEEEE;
+  border: 0px;
+  width: 55%;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+}
+.boxed .w35 {
+  margin-left: 5px;
+  background-color: #EEEEEE;
+  border: 0px;
+  width: 35%;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+}
+.boxed .w15 {
+  margin-left: 5px;
+  background-color: #EEEEEE;
+  border: 0px;
+  width: 15%;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+}
+.boxed .unitcheck {
+  padding-top: 2%;
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  vertical-align: center;
+  height: 50px;
+  background-color: #EEEEEE;
+  transition: all 0.3s;
+  border-radius: 20px;
+}
+
+.boxed input[type="radio"] {
+  display: none;
+}
+
+.boxed input[type="radio"]:checked+label {
+  border: solid 1px #F17885;
+  background: #FBD1D6;
+}
+
+.boxed input[type="submit"] {
+  background: #F17885;
+  color: white;
+  border-radius: 20px;
+  border: 0px;
+  height: 50px;
+  width: 50%;
+}
+.boxed .addCs {
+  margin-left: 5px;
+  background-color: #EEEEEE;
+  border: 0px;
+  width: 10%;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+}
+.boxed .CsSelc {
+  margin-left: 5px;
+  background-color: #EEEEEE;
+  border: 0px;
+  width: 85%;
+  border-radius: 20px;
+  height: 50px;
+  padding: 10px;
+}
+
+
+
+
+
+
+  .boxed .insul {
+    text-align: right;
+  }
+
+  .boxed .boardul {
+    text-align: right;
+  }
+
+  .transition,
+  p,
+  .boardul .boardli i:before,
+  .boardul .boardli i:after {
+    transition: all 0.3s;
+  }
+
+  .boxed .no-select,
+  .boxed h4 {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  .boxed h4 {
+    color: #cc071e;
+    font-family: 'hm_light', sans-serif;
+    font-size: 20px;
+    .boardline-height: 34px;
+    text-align: right;
+    padding: 15px;
+    text-transform: none;
+    font-weight: 300;
+    letter-spacing: 1px;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    transition: .2s;
+  }
+
+  .boxed p {
+    color: #333;
+    text-align: right;
+    font-family: 'hm_light', sans-serif;
+    font-size: 14px;
+    .boardline-height: 1.45;
+    position: relative;
+    overflow: scroll;
+    height:100%;
+    opacity: 1;
+    transform: translate(0, 0);
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 0 50px 0 15px;
+    transition: .3s opacity, .6s max-height;
+    z-index: 2;
+  }
+
+  .boxed .boardul {
+    .boardlist-style: none;
+    perspective: 900;
+    padding: 0;
+    margin: 0;
+  }
+
+  .boxed .boardul .boardli {
+    position: relative;
+    overflow: inherit;
+    padding: 0;
+    margin: 0;\
+    height:200px;
+    /*padding-bottom: 4px;*/
+    /*padding-top: 18px;*/
+    background: #fff;
+    box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.1);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .boxed .boardul .boardli+.boardli {
+    margin-top: 15px;
+  }
+
+  .boxed .boardul .boardli:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .boxed .boardul .boardli i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 20px;
+    left: 20px;
+  }
+
+  .boxed .boardul .boardli i:before,
+  .boardul .boardli i:after {
+    content: "";
+    position: absolute;
+    background-color: #cc071e;
+    width: 3px;
+    height: 9px;
+  }
+
+  .boxed .boardul .boardli i:before {
+    transform: translate(-2px, 0) rotate(45deg);
+  }
+
+  .boxed .boardul .boardli i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+  }
+
+  .boxed .boardul .boardli input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 60%;
+    z-index: 1;
+    opacity: 0;
+    touch-action: manipulation;
+  }
+
+  .boxed .boardul .boardli input[type=checkbox]:checked~h2 {
+    color: #000;
+  }
+
+  .boxed .boardul .boardli input[type=checkbox]:checked~p {
+    /*margin-top: 0;*/
+    max-height: 0;
+    transition: .3s;
+    opacity: 0;
+    /*transform: translate(0, 50%);*/
+  }
+
+  .boxed .boardul .boardli input[type=checkbox]:checked~i:before {
+    transform: translate(2px, 0) rotate(45deg);
+  }
+
+  .boxed .boardul .boardli input[type=checkbox]:checked~i:after {
+    transform: translate(-2px, 0) rotate(-45deg);
+  }
+
+  a,
+  a:visited,
+  a:focus,
+  a:active,
+  a:link {
+    text-decoration: none;
+    outline: 0;
+  }
+
+  a {
+    color: currentColor;
+    transition: .2s ease-in-out;
+  }
+
+  ul {
+    padding: 0;
+    .boardlist-style: none;
+  }
+
+  .boxed .insul {
+    .inslist-style: none;
+    perspective: 900;
+    padding: 0;
+    margin: 0;
+  }
+
+  .boxed .insul .insli {
+    position: relative;
+    overflow: inherit;
+    padding: 0;
+    margin: 0;\
+    height:200px;
+    /*padding-bottom: 4px;*/
+    /*padding-top: 18px;*/
+    background: #fff;
+    box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.1);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .boxed .insul .insli+.insli {
+    margin-top: 15px;
+  }
+
+  .boxed .insul .insli:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .boxed .insul .insli i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 20px;
+    left: 20px;
+  }
+
+  .boxed .insul .insli i:before,
+  .insul .insli i:after {
+    content: "";
+    position: absolute;
+    background-color: #cc071e;
+    width: 3px;
+    height: 9px;
+  }
+
+  .boxed .insul .insli i:before {
+    transform: translate(-2px, 0) rotate(45deg);
+  }
+
+  .boxed .insul .insli i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+  }
+
+  .boxed .insul .insli input[type=checkbox] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 60%;
+    z-index: 1;
+    opacity: 0;
+    touch-action: manipulation;
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~h2 {
+    color: #000;
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~p {
+    /*margin-top: 0;*/
+    max-height: 0;
+    transition: .3s;
+    opacity: 0;
+    /*transform: translate(0, 50%);*/
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~i:before {
+    transform: translate(2px, 0) rotate(45deg);
+  }
+
+  .boxed .insul .insli input[type=checkbox]:checked~i:after {
+    transform: translate(-2px, 0) rotate(-45deg);
+  }

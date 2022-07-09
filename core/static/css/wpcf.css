@@ -1,0 +1,20 @@
+
+
+.text-truncate{ 
+	white-space: initial !important;
+}
+.wpcf7-form.cf7skins label {
+    display: block;
+}
+.wpcf7-form.cf7skins img{
+float:left;
+}
+.wpcf7 .cf7s-seaspray{
+    background: transparent !important;
+}
+.selct_multiselct-386{
+display:none !important;}
+.wpcf7-form.cf7skins .wpcf7-checkbox .wpcf7-list-item, .wpcf7-form.cf7skins .wpcf7-radio .wpcf7-list-item {
+    display: inline-block !important;
+    margin-left: 3px;
+}

@@ -275,14 +275,6 @@ class ContractDetailsPerBoard(models.Model):
         verbose_name = "تابلو در قرارداد"
         verbose_name_plural = "تابلوها در قراردادها"
 
-    def get_computed(self):
-        result = (self.BoardContractPrice) / (9+1)
-        return result
-
-    def save(self, *args, **kwargs):
-        self.DailyPrice = self.get_computed()
-        super(ContractDetailsPerBoard, self).save(*args, **kwargs)
-
     def __str__(self):
         return str(self.ContractID) + str(self.BoardID)
 

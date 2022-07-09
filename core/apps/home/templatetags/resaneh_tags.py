@@ -18,10 +18,24 @@ def contactform(context):
         form = ContactUsForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.info(request, "با تشکر، به زودی با شما تماس خواهیم گرفت")
     context ={
         "form" : form,
         }
     return {
         "form" : form,
+    }
+
+@register.inclusion_tag("apps/home/templates/home/partial/contactform2.html" , takes_context=True)
+def contactform2(context):
+    request = context.get('request')
+    form2 = ContactUsForm()
+    if request.POST:
+        form2 = ContactUsForm(request.POST)
+        if form2.is_valid():
+            form2.save()
+    context ={
+        "form2" : form2,
+        }
+    return {
+        "form2" : form2,
     }

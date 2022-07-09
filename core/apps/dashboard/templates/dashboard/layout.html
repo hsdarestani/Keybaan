@@ -62,14 +62,20 @@
               <ul class="nav side-menu">
                 <li><a href="{% url 'dashboard:panel' %}"><i class="fa fa-home"></i>داشبورد اصلی </a>
                 </li>
+                {% if request.user.profile.position_id == 4 or request.user.is_superuser %}
                 <li><a><i class="fa fa-edit"></i> فرم های ورود اطلاعات <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
+                    {% if request.user.profile.IndustrySel_id == 1 or request.user.is_superuser %}
                     <li><a href="{% url 'formsOOH:contract' %}">ثبت قرارداد</a></li>
+{% endif %}
                     <!-- <li><a href="{% url 'formsOOH:econtract' %}">فسخ قرارداد</a></li> -->
+                    {% if request.user.profile.IndustrySel_id == 2 or request.user.is_superuser %}
                     <li><a href="{% url 'formsFandB:input' %}">ثبت ورودی</a></li>
                     <li><a href="{% url 'formsFandB:output' %}">ثبت خروجی</a></li>
+                    {% endif %}
                   </ul>
                 </li>
+                {% endif %}
                 <li><a><i class="fa fa-bar-chart-o"></i> ارائه داده <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{% url 'dashboard:echarts' %}">گزارش تفصیلی BI</a></li>

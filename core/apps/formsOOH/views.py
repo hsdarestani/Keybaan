@@ -10,6 +10,7 @@ from .decorators import *
 from apps.formsOOH.models import Customers,Boards,Agents,ContractDetailsPerBoard, Installment,Contracts
 from django.forms import formset_factory
 from extensions import jalali
+import datetime
 
 
 @login_required
@@ -23,14 +24,10 @@ def contract(request):
     form3 = InstallmentForm()
     form2set = formset_factory(ContractDetailsPerBoardForm)
     form3set = formset_factory(InstallmentForm)
-
     formset2 = form2set(request.POST or None,prefix='formset2')
     formset = form3set(request.POST or None,prefix='formset3')
     form4 = CustomersForm()
-    print(type(form4))
     form1.fields["CustomerID"].queryset = Customers.objects.filter(Company_id=request.user.profile.company_id)
-    print(type(formset2))
-    # print(formset2.fields)
     form1.fields["AgentNameID"].queryset = Agents.objects.filter(Company_id=request.user.profile.company_id)
     mamadBoards = Boards.objects.filter(Company_id=request.user.profile.company_id)
 
@@ -63,8 +60,7 @@ def contract(request):
             obj = form1.save(commit=False)
             obj.ContractConfirmDate = jalali.Persian(str(obj.ContractConfirmDateJalali)).gregorian_string()
             try:
-                get_object_or_404(Contracts,ContractNumber = obj.ContractNumber)
-                conNcheck = 1
+                conNcheck = get_object_or_404(Contracts,ContractNumber = obj.ContractNumber)
             except:
                 conNcheck = 0
             if (conNcheck):
@@ -79,7 +75,7 @@ def contract(request):
                 for form2 in formset2:
                     obj2 = form2.save(commit=False)
                     obj2.AgentNameID = obj.AgentNameID
-                    obj2.ContractStart = jalali.Persian('1401-02-10').gregorian_string()
+                    obj2.ContractStart = jalali.Persian(str(obj2.JalaliStart)).gregorian_string()
                     obj2.ContractFinish = jalali.Persian(str(obj2.JalaliFinish)).gregorian_string()
                     try:
                         SameBoards = ContractDetailsPerBoard.objects.all(BoardID = obj2.BoardID)
@@ -95,12 +91,16 @@ def contract(request):
                     elif (obj2.ContractStart > obj2.ContractFinish):
                         messages.info(request, "تاریخ شروع اکران نباید زودتر از تاریخ پایان اکران باشد")
                     else:
+                        starbrd = datetime.datetime.strptime(obj2.ContractStart, '%Y-%m-%d')
+                        fnshbrd = datetime.datetime.strptime(obj2.ContractFinish, '%Y-%m-%d')
+                        delta = fnshbrd - starbrd
+                        obj2.DailyPrice = int(obj2.BoardContractPrice) /(delta.days +1)
                         obj2.ContractID = conb
                         obj2.EntryAgent = user
                         obj2.Company_id = company
                         obj2.save()
-                    insnum = 1
-                    inssum = 0
+                insnum = 1
+                inssum = 0
                 for form in formset:
                      obj3 = form.save(commit=False)
                      try:
@@ -109,13 +109,14 @@ def contract(request):
                              inssum += ins.Installment
                      except:
                          SameBoardscheck = 0
+                     obj3.PaymentDate = jalali.Persian(str(obj3.PaymentDateJalali)).gregorian_string()
                      obj3.ContractID = conb
                      obj3.EntryAgent = user
                      obj3.Company_id = company
                      obj3.save()
                      insnum += 1
-                if (inssum != obj.ContractPrice):
-                    messages.info(request, "مجموع اقساط با مبلغ کل قرارداد برابر نشده است")
+                # if (inssum != int(obj.ContractPrice)):
+                #     messages.info(request, "مجموع اقساط با مبلغ کل قرارداد برابر نشده است")
                 return redirect('formsOOH:contract')
     context={
         'form1':form1,
