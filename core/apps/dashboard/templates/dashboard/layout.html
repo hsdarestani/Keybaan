@@ -65,10 +65,23 @@
                 {% if request.user.profile.position_id == 4 or request.user.is_superuser %}
                 <li><a><i class="fa fa-edit"></i> فرم های ورود اطلاعات <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
+                    {% if request.user.is_superuser %}
+                    <p style="padding:10px; color:white; opacity:60%;">صنعت تبلیغات محیطی</p>
+                    {% endif %}
                     {% if request.user.profile.IndustrySel_id == 1 or request.user.is_superuser %}
-                    <li><a href="{% url 'formsOOH:contract' %}">ثبت قرارداد</a></li>
-{% endif %}
+                    <li><a href="{% url 'formsOOH:contract' %}">ثبت قرارداد فروش</a></li>
+                    {% endif %}
+                    {% if request.user.profile.IndustrySel_id == 1 or request.user.is_superuser %}
+                    <li><a href="{% url 'formsOOH:ocontract' %}">ثبت قرارداد عملیات</a></li>
+                    <li><a href="{% url 'formsOOH:ocontractorpayment' %}">پرداختی پیمانکاران</a></li>
+                    {% endif %}
+                    {% if request.user.is_superuser %}
+                    <span style="color:white;">--------------------------------------</span>
+                    {% endif %}
                     <!-- <li><a href="{% url 'formsOOH:econtract' %}">فسخ قرارداد</a></li> -->
+                    {% if request.user.is_superuser %}
+                    <p style="padding:10px; color:white; opacity:60%;">صنعت هتل و رستوران</p>
+                    {% endif %}
                     {% if request.user.profile.IndustrySel_id == 2 or request.user.is_superuser %}
                     <li><a href="{% url 'formsFandB:input' %}">ثبت ورودی</a></li>
                     <li><a href="{% url 'formsFandB:output' %}">ثبت خروجی</a></li>

@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-eo!ybyoh!%zjo9_5ap+(wd-s3yyd&)-d@v3%yx%qk3c71=w9p6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['keybaan.ir','www.keybaan.ir']
+ALLOWED_HOSTS = ['keybaan.ir','www.keybaan.ir','127.0.0.1']
 
 
 # Application definition
@@ -49,8 +49,31 @@ INSTALLED_APPS = [
     'apps.dashboard',
     'apps.ticketing',
     'apps.blog',
+    'azbankgateways'
 
 ]
+
+AZ_IRANIAN_BANK_GATEWAYS = {
+   'GATEWAYS': {
+       'IDPAY': {
+           'MERCHANT_CODE': '61c34904-71eb-40a4-903a-388db8170fb4',
+           'METHOD': 'POST',  # GET or POST
+           'X_SANDBOX': 0,  # 0 disable, 1 active
+       },
+   },
+   'IS_SAMPLE_FORM_ENABLE': True, # اختیاری و پیش فرض غیر فعال است
+   'DEFAULT': 'IDPAY',
+   'CURRENCY': 'IRR', # اختیاری
+   'TRACKING_CODE_QUERY_PARAM': 'tc', # اختیاری
+   'TRACKING_CODE_LENGTH': 16, # اختیاری
+   'SETTING_VALUE_READER_CLASS': 'azbankgateways.readers.DefaultReader', # اختیاری
+   'BANK_PRIORITIES': [
+       'BMI',
+       'SEP',
+       # and so on ...
+   ], # اختیاری
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -104,7 +127,7 @@ DATABASES = {
         'PORT': '3306',
         'OPTIONS': {'charset': 'utf8mb4'},
     }
-    
+
 }
 
 # Password validation

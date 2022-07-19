@@ -7,13 +7,13 @@ from django.shortcuts import render, get_object_or_404,redirect
 from .forms import *
 from django.contrib import messages
 from .decorators import *
-from apps.formsFandB.models import FAgents,Procurements,Inventories
+from apps.formsFandB.models import FAgents,Commodities,Inventories,MeasuringUnits,CommodityType
 
 @login_required
 @FandB_user
 def input(request):
     form = InputsForm()
-    form.fields["ProcurementID"].queryset = Procurements.objects.filter(Company_id=request.user.profile.company_id)
+    form.fields["CommodityID"].queryset = Commodities.objects.filter(Company_id=request.user.profile.company_id)
     form.fields["ToInventoryID"].queryset = Inventories.objects.filter(Company_id=request.user.profile.company_id)
 
     if 'InputsForm' in request.POST:
@@ -39,7 +39,7 @@ def input(request):
 def output(request):
     form = OutputsForm()
     form.fields["DeliveryAgent"].queryset = FAgents.objects.filter(Company_id=request.user.profile.company_id)
-    form.fields["ProcurementID"].queryset = Procurements.objects.filter(Company_id=request.user.profile.company_id)
+    form.fields["CommodityID"].queryset = Commodities.objects.filter(Company_id=request.user.profile.company_id)
     form.fields["FromInventoryID"].queryset = Inventories.objects.filter(Company_id=request.user.profile.company_id)
 
     if 'OutputsForm' in request.POST:
@@ -59,3 +59,13 @@ def output(request):
         'form':form,
     }
     return render(request, 'apps/formsFandB/templates/formsFandB/output.html',context)
+
+
+def load_units(request):
+    CommodityID = request.GET.get('CommodityID')
+    aa = Commodities.objects.get(id=CommodityID)
+    bb = aa.CommodityTypeID
+    cc = bb.MeasuringUnitID
+    # print(Commodities.objects.filter(id=CommodityID))
+    # MeasuringUnit = Commodities.CommodityType.objects.filter(id=CommodityID)
+    return render(request, 'apps/formsFandB/templates/formsFandB/units.html', {'MeasuringUnit': cc})

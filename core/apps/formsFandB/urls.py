@@ -7,4 +7,5 @@ app_name = "formsFandB"
 urlpatterns = [
     path('input', input, name='input'),
     path('output', output, name='output'),
+    path('ajax/load-units/', load_units, name='ajax_load_units'),
 ]

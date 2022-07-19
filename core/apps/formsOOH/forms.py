@@ -11,8 +11,46 @@ class CustomersForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomersForm, self).__init__(*args, **kwargs)
+        self.fields['CustomerName'].widget.attrs['class'] = 'kbforms'
+
+class OCustomersForm(ModelForm):
+    class Meta:
+        model = OCustomers
+        fields = ('CustomerName',)
+
+    def __init__(self, *args, **kwargs):
+        super(OCustomersForm, self).__init__(*args, **kwargs)
+        self.fields['CustomerName'].widget.attrs['placeholder'] = 'نام مشتری'
+        self.fields['CustomerName'].widget.attrs['class'] = 'kbforms'
+
+class OContractorForm(ModelForm):
+    class Meta:
+        model = OContractor
+        fields = ('Contractor','ContractorType',)
+
+    def __init__(self, *args, **kwargs):
+        super(OContractorForm, self).__init__(*args, **kwargs)
+        self.fields['Contractor'].widget.attrs['placeholder'] = 'نام پیمانکار'
+        self.fields['ContractorType'].widget.attrs['placeholder'] = 'نوع پیمانکار'
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'kbforms'
+
+class OContractsForm(ModelForm):
+    class Meta:
+        model = OContracts
+        fields = ('ContractNumber','CustomerID','ContractConfirmDateJalali',)
+    def __init__(self, *args, **kwargs):
+        super(OContractsForm, self).__init__(*args, **kwargs)
+        self.fields['ContractNumber'].widget.attrs['placeholder'] = 'شماره قرارداد'
+        self.fields['CustomerID'].widget.attrs['placeholder'] = 'نام مشتری'
+        self.fields['ContractConfirmDateJalali'].widget.attrs['placeholder'] = 'تاریخ ثبت قرارداد'
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'kbforms'
+
+        self.fields['ContractConfirmDateJalali'].widget.attrs['readonly'] = 'readonly'
+        self.fields['CustomerID'].widget.attrs['class'] = 'searchable CsSelc'
+        self.fields['ContractConfirmDateJalali'].widget.attrs['id'] = 'ContractConfirmDateJalali'
 
 class ContractsForm(ModelForm):
     class Meta:
@@ -52,6 +90,46 @@ class eContractsForm(ModelForm):
         self.fields['ContractNumber'].widget.attrs['class'] = 'searchable kbforms'
         self.fields['IsCancelled'].widget.attrs['class'] = ''
         self.fields['CancelingDateJalali'].widget.attrs['id'] = 'CancelingDateJalali'
+
+class OContractDetailsPerBoardForm(ModelForm):
+    class Meta:
+        model = OContractDetailsPerBoard
+        fields = ('BoardID',)
+
+    def __init__(self, *args, **kwargs):
+        super(OContractDetailsPerBoardForm, self).__init__(*args, **kwargs)
+        self.fields['BoardID'].widget.attrs['class'] = 'searchable kbforms'
+
+class OOperationForm(ModelForm):
+    class Meta:
+        model = OOperation
+        fields = ('OperationTypeID','ContractorID','OperationDateJalali','OperationFee','OperationTariff')
+
+    def __init__(self, *args, **kwargs):
+        super(OOperationForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'kbforms'
+        self.fields['OperationDateJalali'].widget.attrs['readonly'] = 'readonly'
+        self.fields['OperationTypeID'].widget.attrs['class'] = 'searchable kbforms'
+        self.fields['ContractorID'].widget.attrs['class'] = 'searchable kbforms'
+        self.fields['OperationDateJalali'].widget.attrs['id'] = 'OperationDateJalali'
+
+
+class OContractorPaymentForm(ModelForm):
+    class Meta:
+        model = OContractorPayment
+        fields = ('PaymentFee','ContractorID','PaymentDateJalali')
+
+    def __init__(self, *args, **kwargs):
+        super(OContractorPaymentForm, self).__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'kbforms'
+        self.fields['PaymentDateJalali'].widget.attrs['readonly'] = 'readonly'
+        self.fields['ContractorID'].widget.attrs['class'] = 'searchable kbforms'        
+        self.fields['PaymentDateJalali'].widget.attrs['id'] = 'PaymentDateJalali'
+
 
 class ContractDetailsPerBoardForm(ModelForm):
     class Meta:

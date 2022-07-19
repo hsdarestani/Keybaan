@@ -19,13 +19,10 @@
 
     <h3> فرم ثبت قرارداد</h3>
     {% for message in messages %}
-    <script type="text/javascript">
-      alert('{{message}}');
-    </script>
-
+    <p class="text-danger">{{message}}</p>
     {% endfor %}
     <br>
-    <form id="Contracts" class="boxed" method="post">
+    <form id="Contracts" class="boxed" method="POST">
 
       <div id="wizard" class="form_wizard wizard_horizontal">
         <ul class="wizard_steps anchor">
@@ -377,7 +374,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <br>
-    <form class="boxed" id="AddCustomer" method="post">
+    <form class="boxed" id="AddCustomer" method="POST">
       {% csrf_token %}
 
       {{ form4.CustomerName.label }}

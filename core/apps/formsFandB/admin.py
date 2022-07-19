@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductTypes, PackageTypes, MeasuringUnits, CommodityCategories, CommoditySubCategories, Brands, ProviderTypes, Providers, Commodities, Roles, FAgents, Procurements, Recipes, RecipeIngredients,Inventories,InventoryList,Outputs, Inputs, Sales, Orders
+from .models import ProductTypes, PackageTypes, MeasuringUnits, CommodityType ,PriceList,ConvertingMeasureUnits ,CommodityCategories, CommoditySubCategories, Brands, ProviderTypes, Providers, Commodities, Roles, FAgents, Procurements, Recipes, RecipeIngredients,Inventories,InventoryList,Outputs, Inputs, Sales, Orders
 
 # Register your models here.
 
@@ -32,6 +32,15 @@ class CommoditySubCategoriesAdmin(admin.ModelAdmin):
     search_fields = ('CommoditySubCategory','CommodityCatID','jEntryDate')
 admin.site.register(CommoditySubCategories, CommoditySubCategoriesAdmin)
 
+class CommodityTypeAdmin(admin.ModelAdmin):
+    list_display = ('CommodityTypeName','CommoditySubCatID','MeasuringUnitID','jEntryDate')
+    search_fields = ('CommodityTypeName','CommoditySubCatID','MeasuringUnitID','jEntryDate')
+admin.site.register(CommodityType, CommodityTypeAdmin)
+
+class ConvertingMeasureUnitsAdmin(admin.ModelAdmin):
+    list_display = ('ConvertingUnitName','MeasuringUnitID','ConvertingRatio','jEntryDate')
+    search_fields = ('ConvertingUnitName','MeasuringUnitID','ConvertingRatio','jEntryDate')
+admin.site.register(ConvertingMeasureUnits, ConvertingMeasureUnitsAdmin)
 
 class BrandsAdmin(admin.ModelAdmin):
     list_display = ('BrandName','jEntryDate')
@@ -52,8 +61,8 @@ admin.site.register(Providers, ProvidersAdmin)
 
 
 class CommoditiesAdmin(admin.ModelAdmin):
-    list_display = ('CommodityName','CommodityCatID','CommoditySubCatID','BrandID','jEntryDate')
-    search_fields = ('CommodityName','CommodityCatID','CommoditySubCatID','BrandID','jEntryDate')
+    list_display = ('PackageTypeID','CommodityTypeID','BrandID','jEntryDate')
+    search_fields = ('PackageTypeID','CommodityTypeID','BrandID','jEntryDate')
 admin.site.register(Commodities, CommoditiesAdmin)
 
 
@@ -62,6 +71,10 @@ class RolesAdmin(admin.ModelAdmin):
     search_fields = ('RoleTitle','jEntryDate')
 admin.site.register(Roles, RolesAdmin)
 
+class PriceListAdmin(admin.ModelAdmin):
+    list_display = ('RecipeID','Price','ActivationDate','DeactivationDate','jEntryDate')
+    search_fields = ('RecipeID','Price','ActivationDate','DeactivationDate','jEntryDate')
+admin.site.register(PriceList, PriceListAdmin)
 
 class FAgentsAdmin(admin.ModelAdmin):
     list_display = ('AgentFirstName','AgentLastName','AgentRoleID','jEntryDate')
@@ -94,20 +107,20 @@ admin.site.register(Inventories, InventoriesAdmin)
 
 
 class InventoryListAdmin(admin.ModelAdmin):
-    list_display = ('InventoryID','ProcurementID','RemainingPackageCount','jEntryDate')
-    search_fields = ('InventoryID','ProcurementID','RemainingPackageCount','jEntryDate')
+    list_display = ('InventoryID','CommodityID','ProcurementID','RemainingPackageCount','jEntryDate')
+    search_fields = ('InventoryID','CommodityID','ProcurementID','RemainingPackageCount','jEntryDate')
 admin.site.register(InventoryList, InventoryListAdmin)
 
 
 class OutputsAdmin(admin.ModelAdmin):
-    list_display = ('DeliveryAgent','ProcurementID','FromInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
-    search_fields = ('DeliveryAgent','ProcurementID','FromInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
+    list_display = ('DeliveryAgent','CommodityID','ProcurementID','FromInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
+    search_fields = ('DeliveryAgent','CommodityID','ProcurementID','FromInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
 admin.site.register(Outputs, OutputsAdmin)
 
 
 class InputsAdmin(admin.ModelAdmin):
-    list_display = ('TransfereeAgent','ProcurementID','ToInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
-    search_fields = ('TransfereeAgent','ProcurementID','ToInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
+    list_display = ('TransfereeAgent','CommodityID','ProcurementID','ToInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
+    search_fields = ('TransfereeAgent','CommodityID','ProcurementID','ToInventoryID','TransferedDate','TransferedDateJalali','TransferedQuantity','jEntryDate')
 admin.site.register(Inputs, InputsAdmin)
 
 

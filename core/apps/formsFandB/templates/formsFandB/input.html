@@ -20,20 +20,21 @@
 
       <br><br>
       <div class="row">
-        {{ form.ProcurementID.label }}
-        {{ form.ProcurementID }}
+        {{ form.CommodityID.label }}
+        {{ form.CommodityID }}
       </div>
       <br><br>
 
       <div class="row">
         {{ form.TransferedQuantity.label }}<br>
         {{ form.TransferedQuantity }}
+
         <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="x" name="unit" value="x" checked="checked">
-        <label class="unitcheck" for="x">واحد x</label>
-        <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="y" name="unit" value="y">
+        <label class="unitcheck" id="unit" for="x">...</label>
+        <!-- <input class="col-md-4 col-sm-4 col-xs-6" type="radio" id="y" name="unit" value="y">
         <label class="unitcheck" for="y">
           واحد فرعی
-        </label>
+        </label> -->
 
       </div>
       <br><br>
@@ -67,9 +68,26 @@
 <!-- /page content -->
 {% endblock %}
 {% block scriptsFiles %}
+
+
 <script src="{% static 'js/select2.min.js' %}"></script>
 
 {% endblock%}
 {% block scripts %}
 
+<script>
+  $("#id_CommodityID").change(function() {
+    var url = "ajax/load-units/"; // get the url of the `load_cities` view
+    var CommodityID = $(this).val(); // get the selected country ID from the HTML input
+    $.ajax({ // initialize an AJAX request
+      url: url, // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+      data: {
+        'CommodityID': CommodityID // add the country id to the GET parameters
+      },
+      success: function(data) {
+        $("#unit").html(data); // replace the contents of the city input with the data that came from the server
+      }
+    });
+  });
+</script>
 {% endblock %}

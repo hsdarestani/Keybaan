@@ -49,6 +49,11 @@ def services(request):
     html_template = loader.get_template('apps/home/templates/home/services.html')
     return HttpResponse(html_template.render(context, request))
 
+def packages(request):
+    context = {'segment': 'services'}
+
+    html_template = loader.get_template('apps/home/templates/home/packages.html')
+    return HttpResponse(html_template.render(context, request))
 
 def FandB(request):
     context = {'segment': 'FandB'}

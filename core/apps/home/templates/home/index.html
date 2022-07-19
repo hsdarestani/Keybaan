@@ -6,7 +6,6 @@
 		<article id="post-6027" class="post-6027 page type-page status-publish hentry">
 			<div class="entry-content">
 
-
 				{% include "apps/home/templates/home/hero.html" %}
 
 				<div class="vc_row-full-width vc_clearfix"></div>
@@ -19,6 +18,7 @@
 						</div>
 					</div>
 				</div>
+				<a href="{% url 'useraccount:go_to_gateway_view' %}">hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</a>
 
 
 				<div class="vc_row wpb_row vc_row-fluid">
@@ -309,7 +309,7 @@
 										</div>
 									</div>
 
-<!--{% include "apps/home/templates/home/blogslider.html" %}-->
+									<!--{% include "apps/home/templates/home/blogslider.html" %}-->
 
 
 
@@ -336,21 +336,21 @@
 
 
 				<!-- The Modal -->
-				 <div id="myModal" class="modal">
+				<div id="myModal" class="modal">
 
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <br>
+					<!-- Modal content -->
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<br>
 
-            <div class="vc_row wpb_row vc_inner">
+						<div class="vc_row wpb_row vc_inner">
 
-  {% contactform2 %}
+							{% contactform2 %}
 
-              
-            </div>
-          </div>
-</div>
+
+						</div>
+					</div>
+				</div>
 		</article><!-- #post -->
 	</div><!-- .site-content -->
 </div>

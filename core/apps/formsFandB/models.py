@@ -13,6 +13,7 @@ class ProductTypes(models.Model):
     class Meta:
         verbose_name = "نوع کالا"
         verbose_name_plural = "انواع کالا"
+        managed= True
 
     def __str__(self):
         return self.ProductTypeTitle
@@ -30,6 +31,7 @@ class PackageTypes(models.Model):
     class Meta:
         verbose_name = "نوع بسته‌بندی"
         verbose_name_plural = "انواع بسته‌بندی"
+        managed= True
 
     def __str__(self):
         return self.PackageTypeTitle
@@ -47,7 +49,7 @@ class MeasuringUnits(models.Model):
     class Meta:
         verbose_name = "واحد اندازه‌گیری"
         verbose_name_plural = "واحدهای اندازه‌گیری"
-
+        managed= True
     def __str__(self):
         return self.MeasuringUnitTitle
 
@@ -64,7 +66,7 @@ class CommodityCategories(models.Model):
     class Meta:
         verbose_name = "دسته‌بندی اصلی اقلام"
         verbose_name_plural = "دسته‌بندی‌های اصلی اقلام"
-
+        managed= True
     def __str__(self):
         return self.CommodityCategory
 
@@ -82,9 +84,51 @@ class CommoditySubCategories(models.Model):
     class Meta:
         verbose_name = "دسته‌بندی فرعی اقلام"
         verbose_name_plural = "دسته‌بندی‌های فرعی اقلام"
-
+        managed= True
     def __str__(self):
         return self.CommoditySubCategory
+
+    def jEntryDate(self):
+        return jalali_converter(self.EntryDate)
+    jEntryDate.short_description = "تاریخ ثبت رکورد"
+
+class CommodityType(models.Model):
+
+    CommodityTypeName = models.CharField(max_length=200, null=True, verbose_name="نام نوع دسته بندی قلم کالا")
+    CommoditySubCatID = models.ForeignKey(CommoditySubCategories, on_delete=models.CASCADE, verbose_name="دسته بندی فرعی")
+    MeasuringUnitID =  models.ForeignKey(MeasuringUnits, on_delete=models.CASCADE, verbose_name="واحد اندازه‌گیری")
+    AccCode = models.IntegerField(null=True, verbose_name="اسکی کد")
+    EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
+
+    class Meta:
+        verbose_name = "نوع قلم کالا"
+        verbose_name_plural = "انواع اقلام کالا"
+        managed= True
+
+    def __str__(self):
+        return self.CommodityTypeName
+
+    def jEntryDate(self):
+        return jalali_converter(self.EntryDate)
+    jEntryDate.short_description = "تاریخ ثبت رکورد"
+
+class ConvertingMeasureUnits(models.Model):
+
+    ConvertingUnitName = models.CharField(max_length=200, null=True, verbose_name="نام واحد تبدیل")
+    MeasuringUnitID =  models.ForeignKey(MeasuringUnits, on_delete=models.CASCADE, verbose_name="واحد اندازه‌گیری")
+    ConvertingRatio = models.FloatField(null=True, verbose_name="نسبت تبدیل")
+    EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
+
+    class Meta:
+        verbose_name = "تبدیل واحد"
+        verbose_name_plural = "تبدیل واحد"
+        managed= True
+    def __str__(self):
+        return self.ConvertingUnitName
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -99,7 +143,7 @@ class Brands(models.Model):
     class Meta:
         verbose_name = "برند"
         verbose_name_plural = "برندها"
-
+        managed= True
     def __str__(self):
         return self.BrandName
 
@@ -116,7 +160,7 @@ class ProviderTypes(models.Model):
     class Meta:
         verbose_name = "نوع تامین کننده"
         verbose_name_plural = "انواع تامین کننده"
-
+        managed= True
     def __str__(self):
         return self.ProviderTypeTitle
 
@@ -134,7 +178,7 @@ class Providers(models.Model):
     class Meta:
         verbose_name = "تامین کننده"
         verbose_name_plural = "تامین کنندگان"
-
+        managed= True
     def __str__(self):
         return self.ProviderName
 
@@ -144,9 +188,8 @@ class Providers(models.Model):
 
 
 class Commodities(models.Model):
-    CommodityName = models.CharField(max_length=200, null=True, verbose_name="نام قلم کالا")
-    CommodityCatID = models.ForeignKey(CommodityCategories, on_delete=models.CASCADE, verbose_name="دسته‌بندی اصلی قلم کالا")
-    CommoditySubCatID = models.ForeignKey(CommoditySubCategories, on_delete=models.CASCADE, verbose_name="دسته‌بندی فرعی قلم کالا")
+    PackageTypeID =  models.ForeignKey(PackageTypes, on_delete=models.CASCADE, verbose_name="نوع بسته‌بندی")
+    CommodityTypeID = models.ForeignKey(CommodityType, on_delete=models.CASCADE, verbose_name="نوع قلم کالا")
     BrandID = models.ForeignKey(Brands, on_delete=models.CASCADE, verbose_name="برند")
     EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
     Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
@@ -155,9 +198,9 @@ class Commodities(models.Model):
     class Meta:
         verbose_name = "قلم کالا"
         verbose_name_plural = "لیست اقلام"
-
+        managed= True
     def __str__(self):
-        return self.CommodityName
+        return str(self.id)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -173,7 +216,7 @@ class Roles(models.Model):
     class Meta:
         verbose_name = "نقش"
         verbose_name_plural = "نقش‌ها"
-
+        managed= True
     def __str__(self):
         return self.RoleTitle
 
@@ -192,7 +235,7 @@ class FAgents(models.Model):
     class Meta:
         verbose_name = "مسئول"
         verbose_name_plural = "مسئول‌ها"
-
+        managed= True
     def __str__(self):
         return self.AgentFirstName
 
@@ -216,13 +259,15 @@ class Procurements(models.Model):
     class Meta:
         verbose_name = "خرید"
         verbose_name_plural = "لیست خرید"
-
+        managed= True
     def __str__(self):
         return str(self.CommodityID)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
     jEntryDate.short_description = "تاریخ ثبت رکورد"
+
+
 
 class Recipes(models.Model):
     Creator = models.CharField(max_length=200, null=True, verbose_name="ایجاد کننده")
@@ -238,7 +283,7 @@ class Recipes(models.Model):
     class Meta:
         verbose_name = "دستور پخت"
         verbose_name_plural = "دستورهای پخت"
-
+        managed= True
     def __str__(self):
         return self.RecipeName
 
@@ -246,6 +291,25 @@ class Recipes(models.Model):
         return jalali_converter(self.EntryDate)
     jEntryDate.short_description = "تاریخ ثبت رکورد"
 
+class PriceList(models.Model):
+    RecipeID =  models.ForeignKey(Recipes, on_delete=models.CASCADE, verbose_name="دستور پخت")
+    Price = models.FloatField(null=True, verbose_name="قیمت")
+    ActivationDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ فعال سازی ")
+    DeactivationDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ غیرفعال سازی")
+    EntryDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ ثبت رکورد")
+    Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name="شرکت")
+    EntryAgent = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name="ثبت کننده")
+
+    class Meta:
+        verbose_name = "ردیف قیمت"
+        verbose_name_plural = "لیست قیمت"
+        managed= True
+    def __str__(self):
+        return str(self.RecipeID)
+
+    def jEntryDate(self):
+        return jalali_converter(self.EntryDate)
+    jEntryDate.short_description = "تاریخ ثبت رکورد"
 
 class RecipeIngredients(models.Model):
     RecipeID =  models.ForeignKey(Recipes, on_delete=models.CASCADE, verbose_name="دستور پخت")
@@ -259,7 +323,7 @@ class RecipeIngredients(models.Model):
     class Meta:
         verbose_name = "جزئیات دستور پخت"
         verbose_name_plural = "جزئیات دستورهای پخت"
-
+        managed= True
     def __str__(self):
         return str(self.RecipeID) + ' ' + str(self.CommodityID)
 
@@ -277,7 +341,7 @@ class Inventories(models.Model):
     class Meta:
         verbose_name = "انبار"
         verbose_name_plural = "انبارها"
-
+        managed= True
     def __str__(self):
         return self.InventoryName
 
@@ -288,6 +352,7 @@ class Inventories(models.Model):
 
 class InventoryList(models.Model):
     InventoryID =  models.ForeignKey(Inventories, on_delete=models.CASCADE, verbose_name="انبار")
+    CommodityID =  models.ForeignKey(Commodities, on_delete=models.CASCADE,null=True, blank=True, verbose_name="ردیف قلم")
     ProcurementID =  models.ForeignKey(Procurements, on_delete=models.CASCADE, verbose_name="ردیف خرید")
     RemainingPackageCount = models.IntegerField(null=True, verbose_name="تعداد باقی‌مانده")
     UpdateDate = models.DateTimeField(auto_now_add=True, null=True, blank=True, verbose_name="تاریخ به روز رسانی")
@@ -297,7 +362,7 @@ class InventoryList(models.Model):
     class Meta:
         verbose_name = "اقلام انبار"
         verbose_name_plural = "لیست انبار"
-
+        managed= True
     def __str__(self):
         return str(self.InventoryID) + ' ' + str(self.ProcurementID) + ' ' + str(self.RemainingPackageCount) + ' ' + str(self.UpdateDate)
 
@@ -308,7 +373,8 @@ class InventoryList(models.Model):
 
 class Outputs(models.Model):
     DeliveryAgent =  models.ForeignKey(FAgents, on_delete=models.CASCADE,null=True, blank=True, verbose_name="مسئول تحویل")
-    ProcurementID =  models.ForeignKey(Procurements, on_delete=models.CASCADE,null=True, blank=True, verbose_name="ردیف خرید")
+    CommodityID =  models.ForeignKey(Commodities, on_delete=models.CASCADE,null=True, blank=True, verbose_name="ردیف قلم")
+    ProcurementID =  models.ForeignKey(Procurements, on_delete=models.CASCADE, verbose_name="ردیف خرید")
     FromInventoryID =  models.ForeignKey(Inventories, on_delete=models.CASCADE,null=True, blank=True, verbose_name="انبار")
     TransferedDate = models.DateField(max_length=200, null=True, verbose_name="تاریخ میلادی خروج")
     TransferedDateJalali = jmodels.jDateField(max_length=200, null=True, verbose_name="تاریخ شمسی خروج")
@@ -320,9 +386,9 @@ class Outputs(models.Model):
     class Meta:
         verbose_name = "خروجی"
         verbose_name_plural = "خروجی‌ها"
-
+        managed= True
     def __str__(self):
-        return str(self.ProcurementID) + ' ' + str(self.FromInventoryID) + ' ' + str(self.TransferedDateJalali)
+        return str(self.CommodityID) + ' ' + str(self.FromInventoryID) + ' ' + str(self.TransferedDateJalali)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -332,7 +398,8 @@ class Outputs(models.Model):
 
 class Inputs(models.Model):
     TransfereeAgent =  models.ForeignKey(FAgents, on_delete=models.CASCADE,null=True, blank=True, verbose_name="مسئول تحویل")
-    ProcurementID =  models.ForeignKey(Procurements, on_delete=models.CASCADE, null=True, blank=True,verbose_name="ردیف خرید")
+    CommodityID =  models.ForeignKey(Commodities, on_delete=models.CASCADE, null=True, blank=True,verbose_name="ردیف قلم")
+    ProcurementID =  models.ForeignKey(Procurements, on_delete=models.CASCADE, verbose_name="ردیف خرید")
     ToInventoryID =  models.ForeignKey(Inventories, on_delete=models.CASCADE, null=True, blank=True,verbose_name="انبار")
     TransferedDate = models.DateField(max_length=200, null=True, blank=True, verbose_name="تاریخ میلادی خروج")
     TransferedDateJalali = jmodels.jDateField(max_length=200, null=True, blank=True, verbose_name="تاریخ شمسی خروج")
@@ -344,9 +411,9 @@ class Inputs(models.Model):
     class Meta:
         verbose_name = "ورودی"
         verbose_name_plural = "ورودی‌ها"
-
+        managed= True
     def __str__(self):
-        return str(self.ProcurementID) + ' ' + str(self.ToInventoryID) + ' ' + str(self.TransferedDateJalali)
+        return str(self.CommodityID) + ' ' + str(self.ToInventoryID) + ' ' + str(self.TransferedDateJalali)
 
     def jEntryDate(self):
         return jalali_converter(self.EntryDate)
@@ -366,7 +433,7 @@ class Sales(models.Model):
     class Meta:
         verbose_name = "فروش"
         verbose_name_plural = "فروش"
-
+        managed= True
     def __str__(self):
         return str(self.FoodName) + ' ' + str(self.Quantity) + ' ' + str(self.EntryDate)
 
@@ -386,7 +453,7 @@ class Orders(models.Model):
     class Meta:
         verbose_name = "سفارشات"
         verbose_name_plural = "سفارشات"
-
+        managed= True
     def __str__(self):
         return str(self.OrderDate) + ' ' + str(self.Hour) + ' ' + str(self.ItemCategory)
 

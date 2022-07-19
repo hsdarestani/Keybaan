@@ -9,5 +9,6 @@ app_name="useraccount"
 urlpatterns = [
     path('login/', login_view, name="login"),
     path('register/', register_user, name="register"),
-    path("logout/", logoutUser, name="logoutUser")
+    path("logout/", logoutUser, name="logoutUser"),
+    path("payment/",go_to_gateway_view,name="go_to_gateway_view")
 ]

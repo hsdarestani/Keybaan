@@ -1,4 +1,3 @@
-
 {% load static %}
 <div class="row">
 	<div class="site-content col-lg-12 col-12 col-md-12">
@@ -68,17 +67,19 @@
 							class="nav-link-text">خانه</span></a></li>
 				<li id="menu-item-15670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-15670 item-level-0 menu-item-design-default menu-simple-dropdown wd-event-hover"><a href="#"
 						class="woodmart-nav-link"><span class="nav-link-text">صنایع</span></a>
-																<div class=" wd-dropdown sub-menu-dropdown">
-												<div class="container">
-													<ul class="wd-sub-menu sub-menu">
-														<li><a href="{% url 'home:advertisement' %}" class="woodmart-nav-link">تبلیغات</a></li>
-														<li><a href="{% url 'home:FandB' %}" class="woodmart-nav-link">هتل و رستوران</a></li>
-													</ul>
-												</div>
-											</div>
+					<div class=" wd-dropdown sub-menu-dropdown">
+						<div class="container">
+							<ul class="wd-sub-menu sub-menu">
+								<li><a href="{% url 'home:advertisement' %}" class="woodmart-nav-link">تبلیغات</a></li>
+								<li><a href="{% url 'home:FandB' %}" class="woodmart-nav-link">هتل و رستوران</a></li>
+							</ul>
+						</div>
+					</div>
 				</li>
 				<li id="menu-item-5292" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5292 item-level-0 menu-simple-dropdown wd-event-hover onepage-link"><a href="{% url 'home:services' %}" class="woodmart-nav-link"><span
 							class="nav-link-text">سرویس‌ها</span></a></li>
+				<li id="menu-item-5292" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5292 item-level-0 menu-simple-dropdown wd-event-hover onepage-link"><a href="{% url 'home:packages' %}" class="woodmart-nav-link"><span
+							class="nav-link-text">پکیج‌ها</span></a></li>
 				<li id="menu-item-5293" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5293 item-level-0 menu-simple-dropdown wd-event-hover onepage-link"><a href="{% url 'home:faq' %}" class="woodmart-nav-link"><span
 							class="nav-link-text">سوالات متداول</span></a></li>
 				<li id="menu-item-5293" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5293 item-level-0 menu-simple-dropdown wd-event-hover onepage-link"><a href="{% url 'home:contact' %}" class="woodmart-nav-link"><span
@@ -92,14 +93,15 @@
 			<p style="text-align: center;"><em>All rights are reserved © 2022, Keybaan</em></p>
 
 		</div>
-<style>.wd-nav{
-justify-content: center;
-}
-</style>
+		<style>
+			.wd-nav {
+				justify-content: center;
+			}
+		</style>
 	</div>
 
 </div>
-	<script type="text/javascript" src="{% static 'js/calendar.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/device.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/calendar.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/device.min.js' %}"></script>
 
-	<script type="text/javascript" src="{% static 'js/mobileNavigation.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/mobileNavigation.min.js' %}"></script>
